@@ -2,6 +2,8 @@
 
 ### Catherine Schlienger
 ### Erik Pavlusik
+### Mhd Hasan Yahya
+### Tomi Fekete
 
 
 - [x] Setting up Repository

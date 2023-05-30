@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/exercises/week3_webDevelopment/exercise2/advanced-greeting.iml" filepath="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise2/advanced-greeting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week3_webDevelopment/exercise4/advanced-types.iml" filepath="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise4/advanced-types.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week2_properties/exercise5/advanced-yml.iml" filepath="$PROJECT_DIR$/exercises/week2_properties/exercise5/advanced-yml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week1_springbeans/exercise6/amazing-goodbye-world.iml" filepath="$PROJECT_DIR$/exercises/week1_springbeans/exercise6/amazing-goodbye-world.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week1_springbeans/exercise2/amazing-hello-world.iml" filepath="$PROJECT_DIR$/exercises/week1_springbeans/exercise2/amazing-hello-world.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week8_security/exercise6/Marco/authorized-marco.iml" filepath="$PROJECT_DIR$/exercises/week8_security/exercise6/Marco/authorized-marco.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/backend-module-Mhd-Hasan-Yahya.iml" filepath="$PROJECT_DIR$/.idea/backend-module-Mhd-Hasan-Yahya.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week3_webDevelopment/exercise1/basic-greeting.iml" filepath="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise1/basic-greeting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week2_properties/exercise1/basic-properties.iml" filepath="$PROJECT_DIR$/exercises/week2_properties/exercise1/basic-properties.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week3_webDevelopment/exercise3/basic-types.iml" filepath="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise3/basic-types.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week2_properties/exercise2/basic-yml.iml" filepath="$PROJECT_DIR$/exercises/week2_properties/exercise2/basic-yml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/evaluation1/exercise1/basket/basket.iml" filepath="$PROJECT_DIR$/evaluation1/exercise1/basket/basket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week1_springbeans/exercise4/calculator.iml" filepath="$PROJECT_DIR$/exercises/week1_springbeans/exercise4/calculator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week4_web2/exercise5/complex-formula.iml" filepath="$PROJECT_DIR$/exercises/week4_web2/exercise5/complex-formula.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week7_JPA/exercise2/couch-potato.iml" filepath="$PROJECT_DIR$/exercises/week7_JPA/exercise2/couch-potato.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week2_properties/exercise9/credit-cards.iml" filepath="$PROJECT_DIR$/exercises/week2_properties/exercise9/credit-cards.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week3_webDevelopment/exercise7/developer-skills.iml" filepath="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise7/developer-skills.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week4_web2/exercise7/dorothy/dorothy.iml" filepath="$PROJECT_DIR$/exercises/week4_web2/exercise7/dorothy/dorothy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reflections/week7/exercise1/drhouse-accountancy.iml" filepath="$PROJECT_DIR$/reflections/week7/exercise1/drhouse-accountancy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reflections/week3/exercise1/drhouse-admission.iml" filepath="$PROJECT_DIR$/reflections/week3/exercise1/drhouse-admission.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reflections/week4/exercise2/drhouse-admission2.iml" filepath="$PROJECT_DIR$/reflections/week4/exercise2/drhouse-admission2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reflections/week4/exercise1/drhouse-diagnoses.iml" filepath="$PROJECT_DIR$/reflections/week4/exercise1/drhouse-diagnoses.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reflections/week6/exercise1/drhouse-treatments.iml" filepath="$PROJECT_DIR$/reflections/week6/exercise1/drhouse-treatments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consolidation_2/exercise1/drivers.iml" filepath="$PROJECT_DIR$/consolidation_2/exercise1/drivers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week2_properties/exercise3/emergency-numbers.iml" filepath="$PROJECT_DIR$/exercises/week2_properties/exercise3/emergency-numbers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/kickoff_week/exercise1/exercise1.iml" filepath="$PROJECT_DIR$/exercises/kickoff_week/exercise1/exercise1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/kickoff_week/exercise2/exercise2.iml" filepath="$PROJECT_DIR$/exercises/kickoff_week/exercise2/exercise2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/kickoff_week/exercise3/exercise3.iml" filepath="$PROJECT_DIR$/exercises/kickoff_week/exercise3/exercise3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week1_springbeans/exercise7/fizzbuzz.iml" filepath="$PROJECT_DIR$/exercises/week1_springbeans/exercise7/fizzbuzz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week3_webDevelopment/exercise10/flea-market.iml" filepath="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise10/flea-market.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week1_springbeans/exercise5/goodbye-world.iml" filepath="$PROJECT_DIR$/exercises/week1_springbeans/exercise5/goodbye-world.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week1_springbeans/exercise1/hello-world.iml" filepath="$PROJECT_DIR$/exercises/week1_springbeans/exercise1/hello-world.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week4_web2/exercise7/home/home.iml" filepath="$PROJECT_DIR$/exercises/week4_web2/exercise7/home/home.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consolidation_1/exercise1/hot-right-now/hot-right-now.iml" filepath="$PROJECT_DIR$/consolidation_1/exercise1/hot-right-now/hot-right-now.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week3_webDevelopment/exercise8/interactions.iml" filepath="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise8/interactions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week4_web2/exercise3/json-placeholder.iml" filepath="$PROJECT_DIR$/exercises/week4_web2/exercise3/json-placeholder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week8_security/exercise3/language-barriers.iml" filepath="$PROJECT_DIR$/exercises/week8_security/exercise3/language-barriers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week4_web2/exercise1/lorem-ipsum.iml" filepath="$PROJECT_DIR$/exercises/week4_web2/exercise1/lorem-ipsum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week3_webDevelopment/exercise9/marathon.iml" filepath="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise9/marathon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week4_web2/exercise6/marathon-integration.iml" filepath="$PROJECT_DIR$/exercises/week4_web2/exercise6/marathon-integration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week4_web2/exercise4/marco/marco.iml" filepath="$PROJECT_DIR$/exercises/week4_web2/exercise4/marco/marco.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week3_webDevelopment/exercise6/marco-polo.iml" filepath="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise6/marco-polo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week4_web2/exercise2/mocky.iml" filepath="$PROJECT_DIR$/exercises/week4_web2/exercise2/mocky.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise3/mongo-rockscissorspaper.iml" filepath="$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise3/mongo-rockscissorspaper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week3_webDevelopment/exercise5/music-station.iml" filepath="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise5/music-station.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reflections/week1/exercise1/mysterious-calculator.iml" filepath="$PROJECT_DIR$/reflections/week1/exercise1/mysterious-calculator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week8_security/exercise7/mysterious-secret-order.iml" filepath="$PROJECT_DIR$/exercises/week8_security/exercise7/mysterious-secret-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week8_security/exercise5/never-too-late.iml" filepath="$PROJECT_DIR$/exercises/week8_security/exercise5/never-too-late.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week7_JPA/exercise3/phone-book.iml" filepath="$PROJECT_DIR$/exercises/week7_JPA/exercise3/phone-book.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week4_web2/exercise4/polo/polo.iml" filepath="$PROJECT_DIR$/exercises/week4_web2/exercise4/polo/polo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise1/punch-cards.iml" filepath="$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise1/punch-cards.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consolidation_1/exercise1/recommendations/recommendations.iml" filepath="$PROJECT_DIR$/consolidation_1/exercise1/recommendations/recommendations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week2_properties/exercise4/restaurant-taxer.iml" filepath="$PROJECT_DIR$/exercises/week2_properties/exercise4/restaurant-taxer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consolidation_2/exercise2/rides.iml" filepath="$PROJECT_DIR$/consolidation_2/exercise2/rides.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week2_properties/exercise8/rock-scissors-paper.iml" filepath="$PROJECT_DIR$/exercises/week2_properties/exercise8/rock-scissors-paper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week1_springbeans/exercise3/round-up-counter.iml" filepath="$PROJECT_DIR$/exercises/week1_springbeans/exercise3/round-up-counter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/optional_evaluation/scheduling/scheduling.iml" filepath="$PROJECT_DIR$/optional_evaluation/scheduling/scheduling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reflections/week2_properties/exercise1/secret-agent-handshakes.iml" filepath="$PROJECT_DIR$/reflections/week2_properties/exercise1/secret-agent-handshakes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week8_security/exercise6/Polo/secured-polo.iml" filepath="$PROJECT_DIR$/exercises/week8_security/exercise6/Polo/secured-polo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week2_properties/exercise7/singapore-reconstruction.iml" filepath="$PROJECT_DIR$/exercises/week2_properties/exercise7/singapore-reconstruction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week7_JPA/exercise4/social-network.iml" filepath="$PROJECT_DIR$/exercises/week7_JPA/exercise4/social-network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/evaluation2/exercise2/steam-purchases.iml" filepath="$PROJECT_DIR$/evaluation2/exercise2/steam-purchases.iml" />
+      <module fileurl="file://$PROJECT_DIR$/evaluation2/exercise1/steam-users.iml" filepath="$PROJECT_DIR$/evaluation2/exercise1/steam-users.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consolidation_1/exercise1/tailored-recommendations/tailored-recommendations.iml" filepath="$PROJECT_DIR$/consolidation_1/exercise1/tailored-recommendations/tailored-recommendations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise2/the-final-countdown.iml" filepath="$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise2/the-final-countdown.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week8_security/exercise2/the-hotel-room.iml" filepath="$PROJECT_DIR$/exercises/week8_security/exercise2/the-hotel-room.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week8_security/exercise1/the-thieves-den.iml" filepath="$PROJECT_DIR$/exercises/week8_security/exercise1/the-thieves-den.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week2_properties/exercise6/threepwood-cinema.iml" filepath="$PROJECT_DIR$/exercises/week2_properties/exercise6/threepwood-cinema.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise4/todos.iml" filepath="$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise4/todos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise5/twitter.iml" filepath="$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise5/twitter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/evaluation1/exercise1/users/users.iml" filepath="$PROJECT_DIR$/evaluation1/exercise1/users/users.iml" />
+      <module fileurl="file://$PROJECT_DIR$/optional_evaluation/validation/validation.iml" filepath="$PROJECT_DIR$/optional_evaluation/validation/validation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/week4_web2/exercise7/wizard/wizard.iml" filepath="$PROJECT_DIR$/exercises/week4_web2/exercise7/wizard/wizard.iml" />
+    </modules>
+  </component>
+</project>

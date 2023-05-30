@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="rock-scissors-paper" />
+        <module name="basket" />
+        <module name="advanced-yml" />
+        <module name="authorized-marco" />
+        <module name="steam-users" />
+        <module name="complex-formula" />
+        <module name="punch-cards" />
+        <module name="rides" />
+        <module name="recommendations" />
+        <module name="drhouse-admission2" />
+        <module name="amazing-hello-world" />
+        <module name="emergency-numbers" />
+        <module name="twitter" />
+        <module name="hot-right-now" />
+        <module name="scheduling" />
+        <module name="mysterious-calculator" />
+        <module name="mocky" />
+        <module name="basic-yml" />
+        <module name="validation" />
+        <module name="the-final-countdown" />
+        <module name="calculator" />
+        <module name="marathon" />
+        <module name="singapore-reconstruction" />
+        <module name="drhouse-treatments" />
+        <module name="fizzbuzz" />
+        <module name="basic-greeting" />
+        <module name="dorothy" />
+        <module name="users" />
+        <module name="advanced-greeting" />
+        <module name="secret-agent-handshakes" />
+        <module name="mysterious-secret-order" />
+        <module name="threepwood-cinema" />
+        <module name="marathon-integration" />
+        <module name="drivers" />
+        <module name="basic-properties" />
+        <module name="music-station" />
+        <module name="steam-purchases" />
+        <module name="hello-world" />
+        <module name="mongo-rockscissorspaper" />
+        <module name="the-thieves-den" />
+        <module name="amazing-goodbye-world" />
+        <module name="tailored-recommendations" />
+        <module name="goodbye-world" />
+        <module name="interactions" />
+        <module name="social-network" />
+        <module name="drhouse-accountancy" />
+        <module name="credit-cards" />
+        <module name="json-placeholder" />
+        <module name="drhouse-admission" />
+        <module name="lorem-ipsum" />
+        <module name="developer-skills" />
+        <module name="couch-potato" />
+        <module name="secured-polo" />
+        <module name="restaurant-taxer" />
+        <module name="marco" />
+        <module name="phone-book" />
+        <module name="language-barriers" />
+        <module name="never-too-late" />
+        <module name="round-up-counter" />
+        <module name="the-hotel-room" />
+        <module name="home" />
+        <module name="drhouse-diagnoses" />
+        <module name="flea-market" />
+        <module name="polo" />
+        <module name="wizard" />
+        <module name="todos" />
+        <module name="advanced-types" />
+        <module name="basic-types" />
+        <module name="marco-polo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="advanced-greeting" target="11" />
+      <module name="advanced-types" target="11" />
+      <module name="advanced-yml" target="11" />
+      <module name="amazing-goodbye-world" target="11" />
+      <module name="amazing-hello-world" target="11" />
+      <module name="authorized-marco" target="11" />
+      <module name="basic-greeting" target="11" />
+      <module name="basic-properties" target="11" />
+      <module name="basic-types" target="11" />
+      <module name="basic-yml" target="11" />
+      <module name="basket" target="11" />
+      <module name="calculator" target="11" />
+      <module name="complex-formula" target="11" />
+      <module name="couch-potato" target="11" />
+      <module name="credit-cards" target="11" />
+      <module name="developer-skills" target="11" />
+      <module name="dorothy" target="11" />
+      <module name="drhouse-accountancy" target="11" />
+      <module name="drhouse-admission" target="11" />
+      <module name="drhouse-admission2" target="11" />
+      <module name="drhouse-diagnoses" target="11" />
+      <module name="drhouse-treatments" target="11" />
+      <module name="drivers" target="11" />
+      <module name="emergency-numbers" target="11" />
+      <module name="fizzbuzz" target="11" />
+      <module name="flea-market" target="11" />
+      <module name="goodbye-world" target="11" />
+      <module name="hello-world" target="11" />
+      <module name="home" target="11" />
+      <module name="hot-right-now" target="11" />
+      <module name="interactions" target="11" />
+      <module name="json-placeholder" target="11" />
+      <module name="language-barriers" target="11" />
+      <module name="lorem-ipsum" target="11" />
+      <module name="marathon" target="11" />
+      <module name="marathon-integration" target="11" />
+      <module name="marco" target="11" />
+      <module name="marco-polo" target="11" />
+      <module name="marco1" target="11" />
+      <module name="marco2" target="11" />
+      <module name="mocky" target="11" />
+      <module name="mongo-rockscissorspaper" target="11" />
+      <module name="music-station" target="11" />
+      <module name="mysterious-calculator" target="11" />
+      <module name="mysterious-secret-order" target="11" />
+      <module name="never-too-late" target="11" />
+      <module name="phone-book" target="11" />
+      <module name="polo" target="11" />
+      <module name="polo2" target="11" />
+      <module name="punch-cards" target="11" />
+      <module name="recommendations" target="11" />
+      <module name="restaurant-taxer" target="11" />
+      <module name="rides" target="11" />
+      <module name="rock-scissors-paper" target="11" />
+      <module name="round-up-counter" target="11" />
+      <module name="scheduling" target="11" />
+      <module name="secret-agent-handshakes" target="11" />
+      <module name="secured-polo" target="11" />
+      <module name="singapore-reconstruction" target="11" />
+      <module name="social-network" target="11" />
+      <module name="steam-purchases" target="11" />
+      <module name="steam-users" target="11" />
+      <module name="tailored-recommendations" target="11" />
+      <module name="the-final-countdown" target="11" />
+      <module name="the-hotel-room" target="11" />
+      <module name="the-thieves-den" target="11" />
+      <module name="threepwood-cinema" target="11" />
+      <module name="todos" target="11" />
+      <module name="twitter" target="11" />
+      <module name="users" target="11" />
+      <module name="validation" target="11" />
+      <module name="wizard" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="advanced-greeting" options="-parameters" />
+      <module name="advanced-types" options="-parameters" />
+      <module name="advanced-yml" options="-parameters" />
+      <module name="amazing-goodbye-world" options="-parameters" />
+      <module name="amazing-hello-world" options="-parameters" />
+      <module name="authorized-marco" options="-parameters" />
+      <module name="basic-greeting" options="-parameters" />
+      <module name="basic-properties" options="-parameters" />
+      <module name="basic-types" options="-parameters" />
+      <module name="basic-yml" options="-parameters" />
+      <module name="basket" options="-parameters" />
+      <module name="calculator" options="-parameters" />
+      <module name="complex-formula" options="-parameters" />
+      <module name="couch-potato" options="-parameters" />
+      <module name="credit-cards" options="-parameters" />
+      <module name="developer-skills" options="-parameters" />
+      <module name="dorothy" options="-parameters" />
+      <module name="drhouse-accountancy" options="-parameters" />
+      <module name="drhouse-admission" options="-parameters" />
+      <module name="drhouse-admission2" options="-parameters" />
+      <module name="drhouse-diagnoses" options="-parameters" />
+      <module name="drhouse-treatments" options="-parameters" />
+      <module name="drivers" options="-parameters" />
+      <module name="emergency-numbers" options="-parameters" />
+      <module name="fizzbuzz" options="-parameters" />
+      <module name="flea-market" options="-parameters" />
+      <module name="goodbye-world" options="-parameters" />
+      <module name="hello-world" options="-parameters" />
+      <module name="home" options="-parameters" />
+      <module name="hot-right-now" options="-parameters" />
+      <module name="interactions" options="-parameters" />
+      <module name="json-placeholder" options="-parameters" />
+      <module name="language-barriers" options="-parameters" />
+      <module name="lorem-ipsum" options="-parameters" />
+      <module name="marathon" options="-parameters" />
+      <module name="marathon-integration" options="-parameters" />
+      <module name="marco" options="-parameters" />
+      <module name="marco-polo" options="-parameters" />
+      <module name="marco1" options="-parameters" />
+      <module name="marco2" options="-parameters" />
+      <module name="mocky" options="-parameters" />
+      <module name="mongo-rockscissorspaper" options="-parameters" />
+      <module name="music-station" options="-parameters" />
+      <module name="mysterious-calculator" options="-parameters" />
+      <module name="mysterious-secret-order" options="-parameters" />
+      <module name="never-too-late" options="-parameters" />
+      <module name="phone-book" options="-parameters" />
+      <module name="polo" options="-parameters" />
+      <module name="polo2" options="-parameters" />
+      <module name="punch-cards" options="-parameters" />
+      <module name="recommendations" options="-parameters" />
+      <module name="restaurant-taxer" options="-parameters" />
+      <module name="rides" options="-parameters" />
+      <module name="rock-scissors-paper" options="-parameters" />
+      <module name="round-up-counter" options="-parameters" />
+      <module name="scheduling" options="-parameters" />
+      <module name="secret-agent-handshakes" options="-parameters" />
+      <module name="secured-polo" options="-parameters" />
+      <module name="singapore-reconstruction" options="-parameters" />
+      <module name="social-network" options="-parameters" />
+      <module name="steam-purchases" options="-parameters" />
+      <module name="steam-users" options="-parameters" />
+      <module name="tailored-recommendations" options="-parameters" />
+      <module name="the-final-countdown" options="-parameters" />
+      <module name="the-hotel-room" options="-parameters" />
+      <module name="the-thieves-den" options="-parameters" />
+      <module name="threepwood-cinema" options="-parameters" />
+      <module name="todos" options="-parameters" />
+      <module name="twitter" options="-parameters" />
+      <module name="users" options="-parameters" />
+      <module name="validation" options="-parameters" />
+      <module name="wizard" options="-parameters" />
+    </option>
+  </component>
+</project>

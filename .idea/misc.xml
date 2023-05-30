@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/exercises/week1_springbeans/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week1_springbeans/exercise2/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week1_springbeans/exercise3/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week1_springbeans/exercise4/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week1_springbeans/exercise5/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week1_springbeans/exercise6/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week1_springbeans/exercise7/pom.xml" />
+        <option value="$PROJECT_DIR$/reflections/week1/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week2_properties/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week2_properties/exercise2/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week2_properties/exercise3/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week2_properties/exercise4/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week2_properties/exercise5/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week2_properties/exercise6/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week2_properties/exercise7/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week2_properties/exercise8/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week2_properties/exercise9/pom.xml" />
+        <option value="$PROJECT_DIR$/reflections/week2_properties/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise2/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise3/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise4/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise5/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise6/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise7/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise8/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise9/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week3_webDevelopment/exercise10/pom.xml" />
+        <option value="$PROJECT_DIR$/reflections/week3/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week4_web2/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week4_web2/exercise2/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week4_web2/exercise3/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week4_web2/exercise4/polo/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week4_web2/exercise4/marco/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week4_web2/exercise5/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week4_web2/exercise6/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week4_web2/exercise7/dorothy/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week4_web2/exercise7/home/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week4_web2/exercise7/wizard/pom.xml" />
+        <option value="$PROJECT_DIR$/consolidation_1/exercise1/hot-right-now/pom.xml" />
+        <option value="$PROJECT_DIR$/consolidation_1/exercise1/tailored-recommendations/pom.xml" />
+        <option value="$PROJECT_DIR$/consolidation_1/exercise1/recommendations/pom.xml" />
+        <option value="$PROJECT_DIR$/reflections/week4/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/reflections/week4/exercise2/pom.xml" />
+        <option value="$PROJECT_DIR$/practice/exeercise1/marco/pom.xml" />
+        <option value="$PROJECT_DIR$/practice/exeercise1/polo/pom.xml" />
+        <option value="$PROJECT_DIR$/evaluation1/exercise1/users/pom.xml" />
+        <option value="$PROJECT_DIR$/evaluation1/exercise1/basket/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise2/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise3/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise4/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise5/pom.xml" />
+        <option value="$PROJECT_DIR$/reflections/week6/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week7_JPA/exercise2/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week7_JPA/exercise3/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week7_JPA/exercise4/pom.xml" />
+        <option value="$PROJECT_DIR$/reflections/week7/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week8_security/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week8_security/exercise2/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week8_security/exercise3/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week8_security/exercise5/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week8_security/exercise6/Marco/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week8_security/exercise6/Polo/pom.xml" />
+        <option value="$PROJECT_DIR$/exercises/week8_security/exercise7/pom.xml" />
+        <option value="$PROJECT_DIR$/optional_evaluation/scheduling/pom.xml" />
+        <option value="$PROJECT_DIR$/optional_evaluation/validation/pom.xml" />
+        <option value="$PROJECT_DIR$/consolidation_2/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/consolidation_2/exercise2/pom.xml" />
+        <option value="$PROJECT_DIR$/evaluation2/exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/evaluation2/exercise2/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

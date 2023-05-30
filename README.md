@@ -10,4 +10,4 @@
 - [ ] Decide about architecture
 - [ ] Solve the first story
 
-:+1: Project in Progress
+:+1: Project in Progress  :smiley_cat:

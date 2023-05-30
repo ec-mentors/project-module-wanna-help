@@ -1,7 +1,7 @@
-###WELCOME TO OUR PROJECT - WANNA HELP
+### WELCOME TO OUR PROJECT - WANNA HELP
 
-##Catherine Schlienger
-##Erik Pavlusik
+## Catherine Schlienger
+## Erik Pavlusik
 
 
 - [x] Setting up Repository

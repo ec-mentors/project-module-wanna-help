@@ -74,6 +74,7 @@
       <module fileurl="file://$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise5/twitter.iml" filepath="$PROJECT_DIR$/exercises/Week6_noSqlMongoDb/exercise5/twitter.iml" />
       <module fileurl="file://$PROJECT_DIR$/evaluation1/exercise1/users/users.iml" filepath="$PROJECT_DIR$/evaluation1/exercise1/users/users.iml" />
       <module fileurl="file://$PROJECT_DIR$/optional_evaluation/validation/validation.iml" filepath="$PROJECT_DIR$/optional_evaluation/validation/validation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wanna-help/wanna-help.iml" filepath="$PROJECT_DIR$/wanna-help/wanna-help.iml" />
       <module fileurl="file://$PROJECT_DIR$/exercises/week4_web2/exercise7/wizard/wizard.iml" filepath="$PROJECT_DIR$/exercises/week4_web2/exercise7/wizard/wizard.iml" />
     </modules>
   </component>

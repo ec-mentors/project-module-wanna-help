@@ -1,15 +1,11 @@
 package project.wanna_help.registration.persistence.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.Date;
+import javax.validation.constraints.*;
+import java.time.LocalDate;
 
 @Entity
 public class AppUser {
-
     @Id
     @GeneratedValue
     private Long id;
@@ -19,16 +15,17 @@ public class AppUser {
     private String email;
     @Column(unique = true)
     @NotBlank(message = "username is mandatory")
-    //TODO alphanumeric validation
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]*$", message = "Username must be alphanumeric")
     private String username;
     @Size(min = 6, message = "password is mandatory")
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d).+$", message = "Password must have at least one letter and one number")
     private String password;
     @NotNull(message = "role is mandatory")
     @Enumerated(EnumType.STRING)
     private UserRole role;
     @NotBlank(message = "full name is mandatory")
     private String fullName;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String address;
     @Column
     private int failedLoginAttempts = 0;
@@ -37,16 +34,23 @@ public class AppUser {
     public AppUser() {
     }
 
-    public AppUser(String email, String username, String password, UserRole role, String fullName, Date dateOfBirth) {
+    public AppUser(String email, String username, String password, UserRole role, String fullName, LocalDate dateOfBirth, String address) {
         this.email = email;
         this.username = username;
         this.password = password;
         this.role = role;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
+        this.address = address;
     }
 
-
+    public AppUser(String email, String username, String password, UserRole role, String fullName) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.fullName = fullName;
+    }
 
     public Long getId() {
         return id;
@@ -96,11 +100,11 @@ public class AppUser {
         this.fullName = fullName;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

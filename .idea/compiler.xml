@@ -43,6 +43,7 @@
         <module name="basic-properties" />
         <module name="music-station" />
         <module name="steam-purchases" />
+        <module name="wanna-help" />
         <module name="hello-world" />
         <module name="mongo-rockscissorspaper" />
         <module name="the-thieves-den" />
@@ -149,6 +150,7 @@
       <module name="twitter" target="11" />
       <module name="users" target="11" />
       <module name="validation" target="11" />
+      <module name="wanna-help" target="11" />
       <module name="wizard" target="11" />
     </bytecodeTargetLevel>
   </component>
@@ -225,6 +227,7 @@
       <module name="twitter" options="-parameters" />
       <module name="users" options="-parameters" />
       <module name="validation" options="-parameters" />
+      <module name="wanna-help" options="-parameters" />
       <module name="wizard" options="-parameters" />
     </option>
   </component>

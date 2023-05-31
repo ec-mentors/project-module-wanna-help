@@ -19,13 +19,6 @@ public class UserPrincipal implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return AuthorityUtils.createAuthorityList(appUser.getRole().getValue());
     }
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        Set<String> authorities = Set.of("ROLE_VOLUNTEER");
-//        return AuthorityUtils.createAuthorityList(authorities.toArray(new
-//                String[authorities.size()]));
-//    }
-
     @Override
     public String getPassword() {
         return appUser.getPassword();

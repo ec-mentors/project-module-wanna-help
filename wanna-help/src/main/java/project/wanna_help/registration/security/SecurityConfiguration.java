@@ -18,29 +18,18 @@ import static org.springframework.http.HttpMethod.POST;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration {
 
-//    private final CustomLoginFailureHandler failureHandler;
-
-//    public SecurityConfiguration(CustomLoginFailureHandler failureHandler) {
-//        this.failureHandler = failureHandler;
-//    }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers(POST, "/users").permitAll()
-                .antMatchers(POST, "/users/password-reset-link").permitAll()
-                .antMatchers(POST, "/users/password-reset/{token}").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .logout()  // ------> SIGNOUT!!
+                .logout()
                 .logoutUrl("/users/signout")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .and()
-//                .formLogin() // FIXME not counting up the fail login trys
-//                .failureHandler(failureHandler)
-//                .and()
                 .httpBasic();
         return http.build();
     }

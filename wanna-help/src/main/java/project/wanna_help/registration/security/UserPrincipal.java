@@ -15,10 +15,11 @@ public class UserPrincipal implements UserDetails {
         this.appUser = appUser;
     }
 
-        @Override
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return AuthorityUtils.createAuthorityList(appUser.getRole().getValue());
     }
+
     @Override
     public String getPassword() {
         return appUser.getPassword();

@@ -1,6 +1,8 @@
 package project.wanna_help.registration.logic;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import project.wanna_help.registration.persistence.domain.AppUser;
@@ -17,14 +19,17 @@ import java.util.UUID;
 public class ForgottenPasswordService {
     private final AppUserRepository userRepository;
 
+    private final JavaMailSender mailSender;
+
     private final PasswordResetTokenRepository passwordResetTokenRepository;
 
     private final PasswordEncoder passwordEncoder;
 
     private final long expirationHours;
 
-    public ForgottenPasswordService(AppUserRepository userRepository, PasswordResetTokenRepository passwordResetTokenRepository, PasswordEncoder passwordEncoder, @Value("${newpassword.HoursToExpire}") long expirationHours) {
+    public ForgottenPasswordService(AppUserRepository userRepository, JavaMailSender mailSender, PasswordResetTokenRepository passwordResetTokenRepository, PasswordEncoder passwordEncoder,@Value("${newpassword.HoursToExpire}") long expirationHours) {
         this.userRepository = userRepository;
+        this.mailSender = mailSender;
         this.passwordResetTokenRepository = passwordResetTokenRepository;
         this.passwordEncoder = passwordEncoder;
         this.expirationHours = expirationHours;
@@ -48,12 +53,22 @@ public class ForgottenPasswordService {
 
     public void generatePasswordResetLink(String nameOrEmail) {
         Optional<AppUser> optionalUser = userRepository.findOneByUsernameOrEmail(nameOrEmail, nameOrEmail);
+        System.out.println(nameOrEmail);
+        //Optional<AppUser> optionalUser = userRepository.findByEmail(email);
         if (optionalUser.isPresent()) {
             AppUser appUser = optionalUser.get();
+            String useremail = appUser.getEmail();
             String link = createPasswordResetTokenForUser(appUser);
-            System.out.println(link); //Printing out Email
+            System.out.println(link);
+            String emailContent = "Dear User, Please click the link below to reset your password:\n\n" + link;
+            //System.out.println(link);
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setTo(useremail);
+            mailMessage.setSubject("Password Reset");
+            mailMessage.setText(emailContent);
+            mailSender.send(mailMessage);
         } else {
-            throw new EntityNotFoundException("unknown email or user");
+            throw new EntityNotFoundException("unknown email or user");  // or UserNotFoundException(); ?
         }
     }
 
@@ -69,7 +84,7 @@ public class ForgottenPasswordService {
         Date expirationDate = calculateExpirationDate();
         PasswordResetToken passwordResetToken = new PasswordResetToken(token, user,expirationDate);
         passwordResetTokenRepository.save(passwordResetToken);
-        return "/users/password-reset/" + token;
+        return "http://localhost:9100/users/password-reset/" + token;
     }
 
     public void resetPassword(String token, String password1, String password2) {

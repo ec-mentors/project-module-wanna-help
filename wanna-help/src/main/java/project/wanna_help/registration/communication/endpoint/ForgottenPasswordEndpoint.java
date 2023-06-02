@@ -18,10 +18,10 @@ public class ForgottenPasswordEndpoint {
     }
 
 
-    @PostMapping("/password-reset-link")
+    @PostMapping("/passwordresetlink")
     ResponseEntity sendPasswordRestEmail(@RequestBody String nameOrEmail) {
         forgottenPasswordService.generatePasswordResetLink(nameOrEmail);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().build(); // HTTP 200 OK
     }
 
     @PostMapping("/password-reset/{token}")

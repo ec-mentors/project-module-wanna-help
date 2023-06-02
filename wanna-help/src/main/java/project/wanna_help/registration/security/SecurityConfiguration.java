@@ -2,6 +2,8 @@ package project.wanna_help.registration.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,6 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import project.wanna_help.registration.persistence.repository.AppUserRepository;
+
+import java.util.Properties;
 
 import static org.springframework.http.HttpMethod.POST;
 
@@ -23,6 +27,7 @@ public class SecurityConfiguration {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers(POST, "/users", "/login").permitAll()
+                .antMatchers(POST, "/users/passwordresetlink", "/users/password-reset/{token}").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout()
@@ -54,4 +59,20 @@ public class SecurityConfiguration {
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    @Bean
+    public JavaMailSender getJavaMailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp-mail.outlook.com");
+        mailSender.setPort(465);
+        mailSender.setUsername("wanna.help@outlook.com");
+        mailSender.setPassword("WannaHelp");
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "true");
+        return mailSender;
+    }
+
 }

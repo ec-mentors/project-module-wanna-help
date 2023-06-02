@@ -11,7 +11,7 @@ import java.util.Optional;
 public class LoginService {
     private final AppUserRepository appUserRepository;
     private final PasswordEncoder passwordEncoder;
-    private int attemptCount = 0;
+
 
     public LoginService(AppUserRepository appUserRepository, PasswordEncoder passwordEncoder) {
         this.appUserRepository = appUserRepository;

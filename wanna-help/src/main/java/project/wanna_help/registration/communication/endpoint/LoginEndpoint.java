@@ -23,7 +23,7 @@ public class LoginEndpoint {
     }
 
     @PostMapping
-    public ResponseEntity<?> login(@RequestBody LoginDto loginDto) {
+    public ResponseEntity<String> login(@RequestBody LoginDto loginDto) {
         Optional<AppUser> appUser = loginService.login(loginDto.getUsernameOrEmail(), loginDto.getPassword());
         if (appUser.isPresent()) {
             String message = "Login successful";

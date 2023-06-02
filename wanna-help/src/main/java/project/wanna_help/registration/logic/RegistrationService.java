@@ -6,7 +6,10 @@ import org.springframework.validation.annotation.Validated;
 import project.wanna_help.registration.persistence.domain.AppUser;
 import project.wanna_help.registration.persistence.repository.AppUserRepository;
 
+import javax.validation.Valid;
+
 @Service
+@Validated
 public class RegistrationService {
     private final AppUserRepository appUserRepository;
     private final PasswordEncoder passwordEncoder;
@@ -16,7 +19,7 @@ public class RegistrationService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public AppUser register(AppUser appUser) {
+    public AppUser register(@Valid AppUser appUser) {
         String encodedPassword = passwordEncoder.encode(appUser.getPassword());
         appUser.setPassword(encodedPassword);
         return appUserRepository.save(appUser);

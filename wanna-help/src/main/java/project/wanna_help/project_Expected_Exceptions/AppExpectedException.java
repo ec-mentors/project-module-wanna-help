@@ -30,11 +30,11 @@ public class AppExpectedException extends Exception {
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public Map<String, String> handleDuplicateEmailException(SQLIntegrityConstraintViolationException ex) {
+    public Map<String, String> handleDuplicateEmailOrUsernameException(SQLIntegrityConstraintViolationException ex) {
         Map<String, String> errors = new HashMap<>();
-        String errorMessage = "The provided email is already registered.";
+        String errorMessage = "The provided username/email is already registered.";
 
-        errors.put("email", errorMessage);
+        errors.put("error", errorMessage);
 
         return errors;
     }

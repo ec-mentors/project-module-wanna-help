@@ -1,4 +1,4 @@
-package project.wanna_help.registration.communication.endpoint;
+package project.wanna_help.endpoint;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -23,7 +23,7 @@ class LoginEndpointTest {
     @MockBean
     LoginService loginService;
 
-    String url = "/login";
+    String url = "/users/login";
 
     @Test
     void login() {

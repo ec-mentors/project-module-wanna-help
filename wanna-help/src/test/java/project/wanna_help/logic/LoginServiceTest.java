@@ -1,4 +1,4 @@
-package project.wanna_help.registration.logic;
+package project.wanna_help.logic;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

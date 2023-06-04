@@ -1,4 +1,4 @@
-package project.wanna_help.registration.communication.endpoint;
+package project.wanna_help.persistence.dto;
 
 public class LoginDto {
     private String usernameOrEmail;

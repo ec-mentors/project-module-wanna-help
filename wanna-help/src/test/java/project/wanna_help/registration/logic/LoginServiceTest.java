@@ -1,6 +1,5 @@
 package project.wanna_help.registration.logic;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import project.wanna_help.registration.persistence.domain.AppUser;
-import project.wanna_help.registration.persistence.repository.AppUserRepository;
+import project.wanna_help.logic.LoginService;
+import project.wanna_help.persistence.domain.AppUser;
+import project.wanna_help.persistence.repository.AppUserRepository;
 
 import java.util.Optional;
 

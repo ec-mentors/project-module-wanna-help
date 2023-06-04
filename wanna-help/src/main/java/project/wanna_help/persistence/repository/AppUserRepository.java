@@ -1,7 +1,7 @@
-package project.wanna_help.registration.persistence.repository;
+package project.wanna_help.persistence.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import project.wanna_help.registration.persistence.domain.AppUser;
+import project.wanna_help.persistence.domain.AppUser;
 
 import java.util.Optional;
 

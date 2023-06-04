@@ -1,4 +1,4 @@
-package project.wanna_help.registration.persistence.domain;
+package project.wanna_help.persistence.domain;
 
 import javax.persistence.*;
 import java.util.Date;

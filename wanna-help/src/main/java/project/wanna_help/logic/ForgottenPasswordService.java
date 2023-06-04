@@ -1,14 +1,13 @@
-package project.wanna_help.registration.logic;
+package project.wanna_help.logic;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import project.wanna_help.registration.persistence.domain.AppUser;
-import project.wanna_help.registration.persistence.domain.PasswordResetToken;
-import project.wanna_help.registration.persistence.repository.AppUserRepository;
-import project.wanna_help.registration.persistence.repository.PasswordResetTokenRepository;
+import project.wanna_help.persistence.domain.AppUser;
+import project.wanna_help.persistence.domain.PasswordResetToken;
+import project.wanna_help.persistence.repository.AppUserRepository;
+import project.wanna_help.persistence.repository.PasswordResetTokenRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Date;
@@ -19,42 +18,29 @@ import java.util.UUID;
 public class ForgottenPasswordService {
     private final AppUserRepository userRepository;
 
-    private final JavaMailSender mailSender;
+//    private final JavaMailSender mailSender;
 
+    private final EmailRedirector redirector;
     private final PasswordResetTokenRepository passwordResetTokenRepository;
 
     private final PasswordEncoder passwordEncoder;
 
     private final long expirationHours;
 
-    public ForgottenPasswordService(AppUserRepository userRepository, JavaMailSender mailSender, PasswordResetTokenRepository passwordResetTokenRepository, PasswordEncoder passwordEncoder,@Value("${newpassword.HoursToExpire}") long expirationHours) {
+    public ForgottenPasswordService(AppUserRepository userRepository,
+                                    EmailRedirector redirector,
+                                    PasswordResetTokenRepository passwordResetTokenRepository,
+                                    PasswordEncoder passwordEncoder,
+                                    @Value("${newpassword.HoursToExpire}") long expirationHours) {
         this.userRepository = userRepository;
-        this.mailSender = mailSender;
+        this.redirector = redirector;
         this.passwordResetTokenRepository = passwordResetTokenRepository;
         this.passwordEncoder = passwordEncoder;
         this.expirationHours = expirationHours;
     }
 
-
-    public boolean isPasswordValid(String password) {
-        boolean hasDigit = false;
-        boolean hasLetter = false;
-
-        for (char c : password.toCharArray()) {
-            if (Character.isDigit(c)) {
-                hasDigit = true;
-            } else if (Character.isLetter(c)) {
-                hasLetter = true;
-            }
-        }
-
-        return hasDigit && hasLetter;
-    }
-
     public void generatePasswordResetLink(String nameOrEmail) {
         Optional<AppUser> optionalUser = userRepository.findOneByUsernameOrEmail(nameOrEmail, nameOrEmail);
-        System.out.println(nameOrEmail);
-        //Optional<AppUser> optionalUser = userRepository.findByEmail(email);
         if (optionalUser.isPresent()) {
             AppUser appUser = optionalUser.get();
             String useremail = appUser.getEmail();
@@ -66,15 +52,15 @@ public class ForgottenPasswordService {
             mailMessage.setTo(useremail);
             mailMessage.setSubject("Password Reset");
             mailMessage.setText(emailContent);
-            mailSender.send(mailMessage);
+            redirector.redirectEMail(useremail, link);
         } else {
-            throw new EntityNotFoundException("unknown email or user");  // or UserNotFoundException(); ?
+            throw new EntityNotFoundException("unknown email or user");
         }
     }
 
-    private Date calculateExpirationDate(){
+    private Date calculateExpirationDate() {
         Date now = new Date();
-        long expirationTimestamp = now.getTime() + (expirationHours* 60 * 60 * 1000); //milliseconds: 1000x60x60x24 =24h
+        long expirationTimestamp = now.getTime() + (expirationHours * 60 * 60 * 1000); //milliseconds: 1000x60x60x24 =24h
         return new Date(expirationTimestamp);
     }
 
@@ -82,7 +68,7 @@ public class ForgottenPasswordService {
     private String createPasswordResetTokenForUser(AppUser user) {
         String token = UUID.randomUUID().toString();
         Date expirationDate = calculateExpirationDate();
-        PasswordResetToken passwordResetToken = new PasswordResetToken(token, user,expirationDate);
+        PasswordResetToken passwordResetToken = new PasswordResetToken(token, user, expirationDate);
         passwordResetTokenRepository.save(passwordResetToken);
         return "http://localhost:9100/users/password-reset/" + token;
     }
@@ -91,9 +77,7 @@ public class ForgottenPasswordService {
         if (!password1.equals(password2)) {
             throw new IllegalArgumentException("passwords don't match");
         }
-        if (!isPasswordValid(password1)) {
-            throw new IllegalArgumentException("password must have one letter and one digit");
-        }
+
         Optional<PasswordResetToken> optionalPasswordResetToken = passwordResetTokenRepository.findByToken(token);
         if (!optionalPasswordResetToken.isPresent()) {
             throw new IllegalArgumentException("token is not valid");

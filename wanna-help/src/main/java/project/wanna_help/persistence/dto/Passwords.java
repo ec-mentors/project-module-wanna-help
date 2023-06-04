@@ -1,8 +1,12 @@
-package project.wanna_help.registration.persistence.dto;
+package project.wanna_help.persistence.dto;
+
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 
 public class Passwords {
-
-
+    @Size(min = 6, message = "password must has at least 6 characters")
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d).+$", message = "Password must have at least one letter and one number")
     String password1;
     String password2;
 

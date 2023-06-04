@@ -1,4 +1,4 @@
-package project.wanna_help.registration.security;
+package project.wanna_help.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import project.wanna_help.registration.persistence.repository.AppUserRepository;
+import project.wanna_help.persistence.repository.AppUserRepository;
 
 import java.util.Properties;
 
@@ -26,8 +26,8 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers(POST, "/users", "/login").permitAll()
-                .antMatchers(POST, "/users/passwordresetlink", "/users/password-reset/{token}").permitAll()
+                .antMatchers(POST, "/users", "/users/login").permitAll()
+                .antMatchers(POST, "/users/password-reset", "/users/password-reset/{token}").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout()

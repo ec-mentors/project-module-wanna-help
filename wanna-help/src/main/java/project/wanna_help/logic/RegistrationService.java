@@ -1,10 +1,10 @@
-package project.wanna_help.registration.logic;
+package project.wanna_help.logic;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import project.wanna_help.registration.persistence.domain.AppUser;
-import project.wanna_help.registration.persistence.repository.AppUserRepository;
+import project.wanna_help.persistence.domain.AppUser;
+import project.wanna_help.persistence.repository.AppUserRepository;
 
 import javax.validation.Valid;
 

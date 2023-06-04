@@ -1,14 +1,16 @@
-package project.wanna_help.registration.communication.endpoint;
+package project.wanna_help.endpoint;
 
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.http.ResponseEntity;
-import project.wanna_help.registration.logic.ForgottenPasswordService;
-import project.wanna_help.registration.persistence.dto.Passwords;
+import project.wanna_help.logic.ForgottenPasswordService;
+import project.wanna_help.persistence.dto.Passwords;
+
+import javax.validation.Valid;
 
 
 @RestController
-@RequestMapping("/users/")
+@RequestMapping("/users")
 public class ForgottenPasswordEndpoint {
 
     private final ForgottenPasswordService forgottenPasswordService;
@@ -18,16 +20,16 @@ public class ForgottenPasswordEndpoint {
     }
 
 
-    @PostMapping("/passwordresetlink")
-    ResponseEntity sendPasswordRestEmail(@RequestBody String nameOrEmail) {
+    @PostMapping("/password-reset")
+    ResponseEntity<String> sendPasswordResetEmail(@RequestBody String nameOrEmail) {
         forgottenPasswordService.generatePasswordResetLink(nameOrEmail);
-        return ResponseEntity.ok().build(); // HTTP 200 OK
+        return ResponseEntity.ok("Password reset link has been successfully sent to your email"); // HTTP 200 OK
     }
 
     @PostMapping("/password-reset/{token}")
-    ResponseEntity resetPassword(@PathVariable String token, @RequestBody Passwords passwords) {
+    ResponseEntity<String> resetPassword(@PathVariable String token, @Valid @RequestBody Passwords passwords) {
         forgottenPasswordService.resetPassword(token, passwords.getPassword1(), passwords.getPassword2());
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Password has been successfully reset");
     }
 
 }

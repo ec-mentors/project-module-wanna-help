@@ -1,4 +1,4 @@
-package project.wanna_help.registration.persistence.domain;
+package project.wanna_help.persistence.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -17,7 +17,7 @@ public class AppUser {
     @NotBlank(message = "username is mandatory")
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]*$", message = "Username must be alphanumeric")
     private String username;
-    @Size(min = 6, message = "password is mandatory")
+    @Size(min = 6, message = "password must has at least 6 characters")
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d).+$", message = "Password must have at least one letter and one number")
     private String password;
     @NotNull(message = "role is mandatory")

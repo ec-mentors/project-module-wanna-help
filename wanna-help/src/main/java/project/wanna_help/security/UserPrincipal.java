@@ -1,9 +1,9 @@
-package project.wanna_help.registration.security;
+package project.wanna_help.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
-import project.wanna_help.registration.persistence.domain.AppUser;
+import project.wanna_help.persistence.domain.AppUser;
 
 import java.util.Collection;
 

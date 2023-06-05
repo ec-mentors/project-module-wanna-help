@@ -1,8 +1,6 @@
 package project.wanna_help.persistence.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -30,6 +28,9 @@ public class Activity {
     @NotBlank(message = "end date is mandatory")
     private LocalDate endDate;
 
+    @Enumerated(EnumType.STRING)
+    private Activity status;
+
     public Activity() {
     }
 
@@ -40,12 +41,14 @@ public class Activity {
         this.endDate = endDate;
     }
 
-    public Activity(String title, String description, String recommendedSkills, LocalDate startDate, LocalDate endDate) {
+    public Activity(String title, String description, String recommendedSkills, LocalDate startDate, LocalDate endDate, Activity status) {
         this.title = title;
         this.description = description;
         this.recommendedSkills = recommendedSkills;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.status = status;
+
     }
 
     public Long getId() {
@@ -94,6 +97,14 @@ public class Activity {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public Activity getStatus() {
+        return status;
+    }
+
+    public void setStatus(Activity status) {
+        this.status = status;
     }
 }
 

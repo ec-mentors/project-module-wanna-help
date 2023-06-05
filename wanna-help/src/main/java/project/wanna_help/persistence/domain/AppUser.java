@@ -19,6 +19,7 @@ public class AppUser {
     private String username;
     @Size(min = 6, message = "password must has at least 6 characters")
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d).+$", message = "Password must have at least one letter and one number")
+    @NotBlank(message = "Password must have at least one letter and one number" )
     private String password;
     @NotNull(message = "role is mandatory")
     @Enumerated(EnumType.STRING)

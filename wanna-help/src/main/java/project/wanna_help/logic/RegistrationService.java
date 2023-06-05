@@ -9,6 +9,7 @@ import project.wanna_help.persistence.repository.AppUserRepository;
 import javax.validation.Valid;
 
 @Service
+@Validated
 public class RegistrationService {
     private final AppUserRepository appUserRepository;
     private final PasswordEncoder passwordEncoder;

@@ -14,18 +14,13 @@ public class EmailRedirector {
     public void redirectEMail(String nameOrEmail, String link) {
         String sourceEmail = "wanna.help@outlook.com";
         String sourcePassword = System.getenv("PROJECT_EMAIL_PASSWORD");
-        System.out.println(sourcePassword);
         String host = "smtp-mail.outlook.com";
-        int port = 587; // Port number for your email host
-
-        // Set the properties for the JavaMail session
+        int port = 587;
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", port);
-
-        // Create a session with the email account
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(sourceEmail, sourcePassword);
@@ -44,7 +39,6 @@ public class EmailRedirector {
 
             // Redirect the email by sending it
             Transport.send(message);
-            System.out.println("Email redirected successfully!");
 
         } catch (MessagingException e) {
             e.printStackTrace();

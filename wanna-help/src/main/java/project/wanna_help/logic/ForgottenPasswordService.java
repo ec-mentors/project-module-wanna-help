@@ -1,7 +1,6 @@
 package project.wanna_help.logic;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import project.wanna_help.persistence.domain.AppUser;
@@ -17,8 +16,6 @@ import java.util.UUID;
 @Service
 public class ForgottenPasswordService {
     private final AppUserRepository userRepository;
-
-//    private final JavaMailSender mailSender;
 
     private final EmailRedirector redirector;
     private final PasswordResetTokenRepository passwordResetTokenRepository;
@@ -45,13 +42,6 @@ public class ForgottenPasswordService {
             AppUser appUser = optionalUser.get();
             String useremail = appUser.getEmail();
             String link = createPasswordResetTokenForUser(appUser);
-            System.out.println(link);
-            String emailContent = "Dear User, Please click the link below to reset your password:\n\n" + link;
-            //System.out.println(link);
-            SimpleMailMessage mailMessage = new SimpleMailMessage();
-            mailMessage.setTo(useremail);
-            mailMessage.setSubject("Password Reset");
-            mailMessage.setText(emailContent);
             redirector.redirectEMail(useremail, link);
         } else {
             throw new EntityNotFoundException("unknown email or user");

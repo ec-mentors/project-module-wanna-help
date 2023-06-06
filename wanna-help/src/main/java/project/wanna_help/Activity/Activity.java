@@ -52,6 +52,7 @@ public class Activity {
 
     }
 
+
     public Long getId() {
         return id;
     }

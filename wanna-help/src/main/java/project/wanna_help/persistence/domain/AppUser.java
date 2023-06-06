@@ -1,5 +1,7 @@
 package project.wanna_help.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
@@ -28,7 +30,7 @@ public class AppUser {
     private String fullName;
     private LocalDate dateOfBirth;
     private String address;
-    @Column
+    @JsonIgnore
     private int failedLoginAttempts = 0;
 
 

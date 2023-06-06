@@ -1,4 +1,4 @@
-package project.wanna_help.persistence.domain;
+package project.wanna_help.Activity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -19,7 +19,7 @@ public class Activity {
     @NotBlank(message = "description is mandatory")
     private String description;
 
-    @Pattern(regexp = ";", message = "skills should be divided whit ;")
+    @Pattern(regexp = "^[a-zA-Z]+(?:; [a-zA-Z]+)*$", message = "skills should be divided with ; ")
     private String recommendedSkills;
 
     @NotBlank(message = "start date is mandatory")

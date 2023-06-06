@@ -1,4 +1,4 @@
-package project.wanna_help.persistence.domain;
+package project.wanna_help.Activity;
 
 public enum Status {
     PUBLISHED("Published"),

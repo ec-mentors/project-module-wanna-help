@@ -20,7 +20,7 @@ public class Activity {
     @NotBlank(message = "description is mandatory")
     private String description;
 
-    @Pattern(regexp = "^[a-zA-Z]+(?:; [a-zA-Z]+)*$", message = "skills should be divided with ; ")
+    @Pattern(regexp = "^[A-Za-z0-9 ;]+$", message = "skills should be divided with ; ")
     private String recommendedSkills;
 
     @NotNull(message = "start date is mandatory")

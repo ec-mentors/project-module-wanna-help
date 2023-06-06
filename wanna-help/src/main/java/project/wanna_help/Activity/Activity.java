@@ -2,6 +2,7 @@ package project.wanna_help.Activity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -22,10 +23,10 @@ public class Activity {
     @Pattern(regexp = "^[a-zA-Z]+(?:; [a-zA-Z]+)*$", message = "skills should be divided with ; ")
     private String recommendedSkills;
 
-    @NotBlank(message = "start date is mandatory")
+    @NotNull(message = "start date is mandatory")
     private LocalDate startDate;
 
-    @NotBlank(message = "end date is mandatory")
+    @NotNull(message = "end date is mandatory")
     private LocalDate endDate;
 
     @Enumerated(EnumType.STRING)

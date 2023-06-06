@@ -3,6 +3,7 @@ package project.wanna_help.Activity;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,7 @@ public class ActivityEndpoint {
         return activityService.viewInProgressActivities();
     }
     @PostMapping("/add")
-    Activity addActivity(@RequestBody Activity activity) {
+    Activity addActivity(@Valid @RequestBody Activity activity) {
         return activityService.addNewActivity(activity);
     }
 
@@ -44,7 +45,7 @@ public class ActivityEndpoint {
     }
 
     @PutMapping("/{activityId}/manage")
-    void updateActivity(@RequestBody Activity activity, @PathVariable String id) {
+    void updateActivity(@Valid @RequestBody Activity activity, @PathVariable String id) {
 
     }
 

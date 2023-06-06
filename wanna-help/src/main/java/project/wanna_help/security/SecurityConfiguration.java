@@ -28,7 +28,6 @@ public class SecurityConfiguration {
                 .authorizeRequests()
                 .antMatchers(POST, "/users", "/users/login").permitAll()
                 .antMatchers(POST, "/users/password-reset", "/users/password-reset/{token}").permitAll()
-                .antMatchers(POST, "/activities/add").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout()

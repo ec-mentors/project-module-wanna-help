@@ -29,7 +29,7 @@ public class Activity {
     private LocalDate endDate;
 
     @Enumerated(EnumType.STRING)
-    private Activity status;
+    private Status status;
 
     public Activity() {
     }
@@ -41,7 +41,7 @@ public class Activity {
         this.endDate = endDate;
     }
 
-    public Activity(String title, String description, String recommendedSkills, LocalDate startDate, LocalDate endDate, Activity status) {
+    public Activity(String title, String description, String recommendedSkills, LocalDate startDate, LocalDate endDate, Status status) {
         this.title = title;
         this.description = description;
         this.recommendedSkills = recommendedSkills;
@@ -99,11 +99,11 @@ public class Activity {
         this.endDate = endDate;
     }
 
-    public Activity getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(Activity status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }

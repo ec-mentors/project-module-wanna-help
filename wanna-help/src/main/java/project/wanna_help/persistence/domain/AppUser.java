@@ -1,6 +1,8 @@
 package project.wanna_help.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -28,6 +30,9 @@ public class AppUser {
     private UserRole role;
     @NotBlank(message = "full name is mandatory")
     private String fullName;
+
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
+    @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate dateOfBirth;
     private String address;
     @JsonIgnore

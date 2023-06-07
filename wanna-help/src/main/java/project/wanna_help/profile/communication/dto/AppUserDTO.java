@@ -1,5 +1,7 @@
 package project.wanna_help.profile.communication.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 import project.wanna_help.persistence.domain.UserRole;
 
 import java.time.LocalDate;
@@ -10,6 +12,8 @@ public class AppUserDTO {
     private String username;
     private UserRole role;
     private String fullName;
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
+    @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate dateOfBirth;
     private String address;
 

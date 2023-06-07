@@ -32,6 +32,10 @@ public class Activity {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    private boolean pending;
+    private boolean done;
+    private boolean aborted;
+
     public Activity() {
     }
 
@@ -49,9 +53,19 @@ public class Activity {
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
-
     }
 
+    public Activity(String title, String description, String recommendedSkills, LocalDate startDate, LocalDate endDate, Status status, boolean pending, boolean done, boolean aborted) {
+        this.title = title;
+        this.description = description;
+        this.recommendedSkills = recommendedSkills;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.status = status;
+        this.pending = pending;
+        this.done = done;
+        this.aborted = aborted;
+    }
 
     public Long getId() {
         return id;
@@ -107,6 +121,30 @@ public class Activity {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public boolean isPending() {
+        return pending;
+    }
+
+    public void setPending(boolean pending) {
+        this.pending = pending;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    public boolean isAborted() {
+        return aborted;
+    }
+
+    public void setAborted(boolean aborted) {
+        this.aborted = aborted;
     }
 }
 

@@ -2,7 +2,9 @@ package project.wanna_help.Activity;
 
 public enum Status {
     PUBLISHED("Published"),
-    IN_PROGRESS("In Progress");
+    IN_PROGRESS("In Progress"),
+
+    ARCHIVE("Archive");
 
     private String value;
 

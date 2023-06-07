@@ -1,12 +1,12 @@
 server:
   port: 9100
-spring:
-  datasource:
-    url: jdbc:mysql://localhost/wanna-help?useSSL=false
-    username: root
-    password: root
-  jpa:
-    hibernate:
-      ddl-auto: update
 newpassword:
   HoursToExpire: 24
+jdbc:
+  driverClassName: org.h2.Driver
+  url: jdbc:h2:mem:wannaHelp;DB_CLOSE_DELAY=-1;NON_KEYWORDS=KEY,VALUE
+
+hibernate:
+  dialect: org.hibernate.dialect.H2Dialect
+  hbm2ddl:
+    auto: create

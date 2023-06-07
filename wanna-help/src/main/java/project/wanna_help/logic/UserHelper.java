@@ -7,7 +7,6 @@ import project.wanna_help.security.UserPrincipal;
 public class UserHelper {
 
 
-
     /**
      * get current User from the cookies, after Signin, now it's possible to
      * get Data depending from the currently locked-in User and it's privileges

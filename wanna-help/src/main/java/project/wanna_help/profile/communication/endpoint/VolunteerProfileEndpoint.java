@@ -38,7 +38,7 @@ public class VolunteerProfileEndpoint {
        return volunteerProfileService.updateVolunteerSkills(skills);
     }
     @GetMapping("/{id}")
-    //profileendpoint with other roles!
+    //TODO: profileendpoint with other roles!
     VolunteerDTO getVolunteerProfile(@PathVariable Long id){
         return volunteerProfileService.getVolunteerProfileSeenByOthers(id);
     }

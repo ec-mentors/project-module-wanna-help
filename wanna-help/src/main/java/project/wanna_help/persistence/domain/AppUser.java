@@ -1,5 +1,9 @@
 package project.wanna_help.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
@@ -19,15 +23,18 @@ public class AppUser {
     private String username;
     @Size(min = 6, message = "password must has at least 6 characters")
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d).+$", message = "Password must have at least one letter and one number")
+    @NotBlank(message = "Password must have at least one letter and one number" )
     private String password;
     @NotNull(message = "role is mandatory")
     @Enumerated(EnumType.STRING)
     private UserRole role;
     @NotBlank(message = "full name is mandatory")
     private String fullName;
+
+    @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate dateOfBirth;
     private String address;
-    @Column
+    @JsonIgnore
     private int failedLoginAttempts = 0;
 
 

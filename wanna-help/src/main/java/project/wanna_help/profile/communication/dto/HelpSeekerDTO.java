@@ -15,7 +15,6 @@ public class HelpSeekerDTO {
     private UserRole userRole;
     private String fullName;
 
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
     @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate dateOfBirth;
     private String address;

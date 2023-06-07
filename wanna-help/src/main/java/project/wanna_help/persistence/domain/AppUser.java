@@ -31,7 +31,6 @@ public class AppUser {
     @NotBlank(message = "full name is mandatory")
     private String fullName;
 
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
     @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate dateOfBirth;
     private String address;

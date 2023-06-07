@@ -10,8 +10,6 @@ import java.util.List;
 public class VolunteerDTO {
 
     private String username;
-
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
     @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate dateOfBirth;
     private String address;

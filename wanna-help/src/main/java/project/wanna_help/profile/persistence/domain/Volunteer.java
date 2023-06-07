@@ -3,8 +3,7 @@ package project.wanna_help.profile.persistence.domain;
 import project.wanna_help.persistence.domain.AppUser;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.constraints.Pattern;
 
 
 @Entity
@@ -16,24 +15,24 @@ public class Volunteer {
     private Long id;
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private AppUser appUser;
-    @ElementCollection
-    private List<String> mySkills = new ArrayList<>();
+    @Pattern(regexp = "^[a-zA-Z]+(?:;[a-zA-Z]+)*$", message = "Invalid skills format. Skills must be delimited by ';' and contain only letters.")
+    private String mySkills;
     @Enumerated(EnumType.STRING)
     private ExperienceLevel experienceLevel = ExperienceLevel.BRONZE;
 
-
     public Volunteer() {
+    }
+
+    public Volunteer(AppUser appUser, String mySkills, ExperienceLevel experienceLevel) {
+        this.appUser = appUser;
+        this.mySkills = mySkills;
+        this.experienceLevel = experienceLevel;
     }
 
     public Volunteer(AppUser appUser) {
         this.appUser = appUser;
     }
 
-    public Volunteer(AppUser appUser, List<String> mySkills, ExperienceLevel experienceLevel) {
-        this.appUser = appUser;
-        this.mySkills = mySkills;
-        this.experienceLevel = experienceLevel;
-    }
 
     public Long getId() {
         return id;
@@ -51,11 +50,12 @@ public class Volunteer {
         this.appUser = appUser;
     }
 
-    public List<String> getMySkills() {
+
+    public String getMySkills() {
         return mySkills;
     }
 
-    public void setMySkills(List<String> mySkills) {
+    public void setMySkills(String mySkills) {
         this.mySkills = mySkills;
     }
 

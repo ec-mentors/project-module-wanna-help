@@ -11,5 +11,7 @@ public interface VolunteerRepository extends JpaRepository<Volunteer, Long> {
 
     Optional<Volunteer> findByAppUser(AppUser appUser);
 
+    Optional<Volunteer> findById(Long id);
+
 
 }

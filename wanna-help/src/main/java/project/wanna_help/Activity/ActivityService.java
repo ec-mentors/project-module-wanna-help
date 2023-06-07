@@ -25,6 +25,7 @@ public class ActivityService {
     }
 
     public Activity addNewActivity(Activity activity) {
+        activity.setStatus(Status.PUBLISHED);
         return activitiesRepository.save(activity);
     }
 

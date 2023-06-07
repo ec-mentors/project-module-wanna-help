@@ -3,45 +3,40 @@ package project.wanna_help.profile.communication.endpoint;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import project.wanna_help.profile.communication.dto.AppUserDTO;
-import project.wanna_help.profile.communication.dto.VolunteerDTO;
-import project.wanna_help.profile.logic.VolunteerProfileService;
+import project.wanna_help.profile.logic.ProfileService;
 
 @RestController
 @RequestMapping("/profile/volunteer")
 @Secured("ROLE_VOLUNTEER")
 public class VolunteerProfileEndpoint {
 
-    private final VolunteerProfileService volunteerProfileService;
+    private final ProfileService profileService;
 
-    public VolunteerProfileEndpoint(VolunteerProfileService volunteerProfileService) {
-        this.volunteerProfileService = volunteerProfileService;
+    public VolunteerProfileEndpoint(ProfileService profileService) {
+        this.profileService = profileService;
     }
 
     @GetMapping("/myData")
     AppUserDTO viewData() {
-        return volunteerProfileService.getAppUserData();
+        return profileService.getAppUserData();
     }
 
 
     @PutMapping("/myData")
     AppUserDTO addData(@RequestBody AppUserDTO appUserDTO) {
-        return volunteerProfileService.updateAppUserData(appUserDTO);
+        return profileService.updateAppUserData(appUserDTO);
     }
 
     @GetMapping("/mySkills")
     String getSkills(){
-        return volunteerProfileService.getVolunteerSkills();
+        return profileService.getVolunteerSkills();
     }
 
     @PostMapping("/mySkills")
     String updateSkills(@RequestBody String skills){
-       return volunteerProfileService.updateVolunteerSkills(skills);
+       return profileService.updateVolunteerSkills(skills);
     }
-    @GetMapping("/{id}")
-    //TODO: profileendpoint with other roles!
-    VolunteerDTO getVolunteerProfile(@PathVariable Long id){
-        return volunteerProfileService.getVolunteerProfileSeenByOthers(id);
-    }
+
 
 
 

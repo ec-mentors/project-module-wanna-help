@@ -6,8 +6,11 @@ import project.wanna_help.logic.UserHelper;
 import project.wanna_help.persistence.domain.AppUser;
 import project.wanna_help.persistence.repository.AppUserRepository;
 import project.wanna_help.profile.communication.dto.AppUserDTO;
+import project.wanna_help.profile.communication.dto.HelpSeekerDTO;
 import project.wanna_help.profile.communication.dto.VolunteerDTO;
+import project.wanna_help.profile.persistence.domain.HelpSeeker;
 import project.wanna_help.profile.persistence.domain.Volunteer;
+import project.wanna_help.profile.persistence.repository.HelpSeekerRepository;
 import project.wanna_help.profile.persistence.repository.VolunteerRepository;
 
 import javax.persistence.EntityNotFoundException;
@@ -15,18 +18,24 @@ import java.util.Optional;
 
 @Service
 @Validated
-public class VolunteerProfileService {
+public class ProfileService {
 
     private final VolunteerRepository volunteerRepository;
     private final AppUserRepository appUserRepository;
+    private final HelpSeekerRepository helpSeekerRepository;
+
     private final AppUserConverter appUserConverter;
     private final VolunteerConverter volunteerConverter;
 
-    public VolunteerProfileService(VolunteerRepository volunteerRepository, AppUserRepository appUserRepository, AppUserConverter appUserConverter, VolunteerConverter volunteerConverter) {
+    private final HelpSeekerConverter helpSeekerConverter;
+
+    public ProfileService(VolunteerRepository volunteerRepository, AppUserRepository appUserRepository, HelpSeekerRepository helpSeekerRepository, AppUserConverter appUserConverter, VolunteerConverter volunteerConverter, HelpSeekerConverter helpSeekerConverter) {
         this.volunteerRepository = volunteerRepository;
         this.appUserRepository = appUserRepository;
+        this.helpSeekerRepository = helpSeekerRepository;
         this.appUserConverter = appUserConverter;
         this.volunteerConverter = volunteerConverter;
+        this.helpSeekerConverter = helpSeekerConverter;
     }
 
 
@@ -62,11 +71,27 @@ public class VolunteerProfileService {
         return volunteerConverter.convertVolunteerToDTO(volunteer);
     }
 
+    public HelpSeekerDTO getHelpSeekerProfileSeenByOthers(Long id){
+        HelpSeeker helpSeeker = helpSeekerRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("HelpSeeker doesn't exist."));
+        return helpSeekerConverter.convertHelpSeekerToDTO(helpSeeker);
+    }
+
+
     public Volunteer getCurrentVolunteer() {
         AppUser currentUser = UserHelper.getCurrentUser();
         Optional<Volunteer> oVolunteer = volunteerRepository.findByAppUser(currentUser);
         if (oVolunteer.isPresent()) {
             return oVolunteer.get();
+        }
+        throw new EntityNotFoundException();
+    }
+
+    public HelpSeeker getCurrentHelpSeeker() {
+        AppUser currentUser = UserHelper.getCurrentUser();
+        Optional<HelpSeeker> oHelpSeeker = helpSeekerRepository.findByAppUser(currentUser);
+        if (oHelpSeeker.isPresent()) {
+            return oHelpSeeker.get();
         }
         throw new EntityNotFoundException();
     }

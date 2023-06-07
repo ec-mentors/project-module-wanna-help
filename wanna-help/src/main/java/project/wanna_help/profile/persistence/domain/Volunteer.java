@@ -14,7 +14,7 @@ public class Volunteer {
     @GeneratedValue
     private Long id;
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @MapsId
+//    @MapsId
     private AppUser appUser;
     @Pattern(regexp = "^[a-zA-Z]+(?:;[a-zA-Z]+)*$", message = "Invalid skills format. Skills must be delimited by ';' and contain only letters.")
     private String mySkills;

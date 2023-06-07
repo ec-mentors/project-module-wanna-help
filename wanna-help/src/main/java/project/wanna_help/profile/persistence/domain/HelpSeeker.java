@@ -14,7 +14,7 @@ public class HelpSeeker {
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @MapsId
+//    @MapsId
     private AppUser appUser;
 
     //calculate actual rating from ratings
@@ -29,6 +29,10 @@ public class HelpSeeker {
     public HelpSeeker(AppUser appUser, List<Rating> ratings) {
         this.appUser = appUser;
         this.ratings = ratings;
+    }
+
+    public HelpSeeker(AppUser appUser) {
+        this.appUser = appUser;
     }
 
     public Long getId() {

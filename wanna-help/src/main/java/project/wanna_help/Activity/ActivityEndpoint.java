@@ -3,7 +3,6 @@ package project.wanna_help.Activity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
-
 import javax.validation.Valid;
 import java.util.List;
 
@@ -34,14 +33,14 @@ public class ActivityEndpoint {
 
     @PutMapping("/{activityId}/apply")
     @Secured("ROLE_VOLUNTEER")
-    void applyingForActivity(@PathVariable Long id) {
-        activityService.applyForActivity(id);
+    void applyingForActivity(@PathVariable Long id, @RequestBody ApplicationDto applicationDto) {
+        activityService.applyForActivity(id, applicationDto);
     }
 
     @PutMapping("/{activityId}/cancel")
-    @Secured("ROLE_VOLUNTEER")
-    void cancelPendingActivity(@PathVariable Long id) {
-        activityService.applyForActivity(id);
+    @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
+    void cancelPendingActivity(@PathVariable Long id, @RequestBody ApplicationDto applicationDto) {
+        activityService.cancelPendingActivity(id, applicationDto);
     }
 
     @GetMapping("/{activityId}/manage")

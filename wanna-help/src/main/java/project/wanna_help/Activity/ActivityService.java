@@ -1,6 +1,10 @@
 package project.wanna_help.Activity;
 
 import org.springframework.stereotype.Service;
+import project.wanna_help.profile.persistence.domain.HelpSeeker;
+import project.wanna_help.profile.persistence.domain.Volunteer;
+import project.wanna_help.profile.persistence.repository.HelpSeekerRepository;
+import project.wanna_help.profile.persistence.repository.VolunteerRepository;
 
 
 import java.util.List;
@@ -10,10 +14,15 @@ import java.util.Optional;
 public class ActivityService {
 
     private final ActivitiesRepository activitiesRepository;
+    private final VolunteerRepository volunteerRepository;
+
+    private final HelpSeekerRepository helpSeekerRepository;
 
 
-    public ActivityService(ActivitiesRepository activitiesRepository) {
+    public ActivityService(ActivitiesRepository activitiesRepository, VolunteerRepository volunteerRepository, HelpSeekerRepository helpSeekerRepository) {
         this.activitiesRepository = activitiesRepository;
+        this.volunteerRepository = volunteerRepository;
+        this.helpSeekerRepository = helpSeekerRepository;
     }
 
     public List<Activity> viewPublishedActivities() {
@@ -29,18 +38,26 @@ public class ActivityService {
         return activitiesRepository.save(activity);
     }
 
-    public void applyForActivity(Long Id) {
+    public void applyForActivity(Long Id, ApplicationDto dto) {
         Optional<Activity> optionalActivity = activitiesRepository.findById(Id);
-        if(optionalActivity.isEmpty()) {
+        Optional<Volunteer> optionalVolunteer = volunteerRepository.findById(dto.getVolunteerId());
+        Optional<HelpSeeker> optionalHelpSeeker = helpSeekerRepository.findById(dto.getVolunteerId());
+        if(optionalActivity.isEmpty() || optionalVolunteer.isEmpty() || optionalHelpSeeker.isEmpty()) {
             return;
         }
         Activity selectedActivity = optionalActivity.get();
+        Volunteer volunteer = optionalVolunteer.get();
+        HelpSeeker helpSeeker = optionalHelpSeeker.get();
         selectedActivity.setStatus(Status.IN_PROGRESS);
-            activitiesRepository.save(selectedActivity);
+        selectedActivity.setPending(true);
+        volunteer.getApplications().add(selectedActivity);
+        helpSeeker.getApplications().add(selectedActivity);
+        volunteerRepository.save(volunteer);
+        helpSeekerRepository.save(helpSeeker);
 
     }
 
-    public void cancelPendingActivity(Long Id) {
+    public void cancelPendingActivity(Long Id, ApplicationDto dto) {
         Optional<Activity> optionalActivity = activitiesRepository.findById(Id);
         if(optionalActivity.isEmpty()) {
             return;

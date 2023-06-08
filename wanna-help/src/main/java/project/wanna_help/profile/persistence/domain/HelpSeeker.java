@@ -14,7 +14,7 @@ public class HelpSeeker {
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)
-     @MapsId
+    @MapsId
     private AppUser appUser;
 
     //calculate actual rating from ratings

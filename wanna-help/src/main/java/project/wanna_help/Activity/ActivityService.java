@@ -58,15 +58,31 @@ public class ActivityService {
 
     }
 
-    public void cancelPendingActivity(Long Id, ApplicationDto dto) {
+    public String cancelPendingActivity(Long Id, ApplicationDto dto) {
         Optional<Activity> optionalActivity = activitiesRepository.findById(Id);
-        if (optionalActivity.isEmpty()) {
-            return;
+        Optional<Volunteer> optionalVolunteer = volunteerRepository.findById(dto.getVolunteerId());
+        Optional<HelpSeeker> optionalHelpSeeker = helpSeekerRepository.findById(dto.getHelpSeekerId());
+        if (optionalActivity.isEmpty() || optionalVolunteer.isEmpty() || optionalHelpSeeker.isEmpty()) {
+            return "activity not found";
         }
-        Activity selectedActivity = optionalActivity.get();
-        selectedActivity.setStatus(Status.PUBLISHED);
-        //selectedActivity.setPending = false; // set pending boolean to true
-        activitiesRepository.save(selectedActivity);
+        if (dto.getComment().length() > 0) {
+            Activity selectedActivity = optionalActivity.get();
+            Volunteer volunteer = optionalVolunteer.get();
+            HelpSeeker helpSeeker = optionalHelpSeeker.get();
+            helpSeeker.getApplications().remove(selectedActivity);
+            selectedActivity.setAborted(true);
+            selectedActivity.setComment(dto.getComment());
+            selectedActivity.setTimeStamp(java.time.LocalDateTime.now());
+            volunteer.getApplications().remove(selectedActivity);
+            activitiesRepository.save(selectedActivity);
+            helpSeeker.getApplications().add(selectedActivity);
+            volunteerRepository.save(volunteer);
+            helpSeekerRepository.save(helpSeeker);
+            return "The activity was canceled successfully.";
+
+        } else {
+            return "Please write the comment to cancel the activity successfully.";
+        }
 
     }
 
@@ -81,7 +97,7 @@ public class ActivityService {
     }
 
 
-    public void displayThisActivity(Long Id, Activity activity) {
+    public void updateThisActivity(Activity activity, Long Id) {
         Optional<Activity> optionalActivity = activitiesRepository.findById(Id);
         if (optionalActivity.isPresent()) {
             Activity selectedActivity = optionalActivity.get();
@@ -94,5 +110,6 @@ public class ActivityService {
 
 
     }
+
 
 }

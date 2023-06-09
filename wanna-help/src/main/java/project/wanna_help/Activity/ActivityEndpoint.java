@@ -34,25 +34,25 @@ public class ActivityEndpoint {
     @PutMapping("/{id}/apply")
     @Secured("ROLE_VOLUNTEER")
     String applyingForActivity(@PathVariable Long id, @RequestBody ApplicationDto applicationDto) {
-       return activityService.applyForActivity(id, applicationDto);
+        return activityService.applyForActivity(id, applicationDto);
     }
 
     @PutMapping("/{id}/cancel")
     @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
-    void cancelPendingActivity(@PathVariable Long id, @RequestBody ApplicationDto applicationDto) {
-        activityService.cancelPendingActivity(id, applicationDto);
+    String cancelPendingActivity(@PathVariable Long id, @RequestBody ApplicationDto applicationDto) {
+        return activityService.cancelPendingActivity(id, applicationDto);
     }
 
     @GetMapping("/{activityId}/manage")
     @Secured({"ROLE_ORGANIZATION","ROLE_INDIVIDUAL"})
-    Activity displayActivity(@PathVariable Long id) {
-        return activityService.displayThisActivity(id);
+    Activity displayActivity(@PathVariable Long activityId) {
+        return activityService.displayThisActivity(activityId);
     }
 
     @PutMapping("/{activityId}/manage")
     @Secured({"ROLE_ORGANIZATION","ROLE_INDIVIDUAL"})
-    void updateActivity(@Valid @RequestBody Activity activity, @PathVariable Long id) {
-
+    void updateActivity(@Valid @RequestBody Activity activity, @PathVariable Long activityId) {
+        activityService.updateThisActivity(activity, activityId);
     }
 
 }

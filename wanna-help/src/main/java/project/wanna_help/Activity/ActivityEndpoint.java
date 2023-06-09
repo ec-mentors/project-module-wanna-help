@@ -31,13 +31,13 @@ public class ActivityEndpoint {
         return activityService.addNewActivity(activity);
     }
 
-    @PutMapping("/{activityId}/apply")
+    @PutMapping("/{id}/apply")
     @Secured("ROLE_VOLUNTEER")
-    void applyingForActivity(@PathVariable Long id, @RequestBody ApplicationDto applicationDto) {
-        activityService.applyForActivity(id, applicationDto);
+    String applyingForActivity(@PathVariable Long id, @RequestBody ApplicationDto applicationDto) {
+       return activityService.applyForActivity(id, applicationDto);
     }
 
-    @PutMapping("/{activityId}/cancel")
+    @PutMapping("/{id}/cancel")
     @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
     void cancelPendingActivity(@PathVariable Long id, @RequestBody ApplicationDto applicationDto) {
         activityService.cancelPendingActivity(id, applicationDto);
@@ -51,7 +51,8 @@ public class ActivityEndpoint {
 
     @PutMapping("/{activityId}/manage")
     @Secured({"ROLE_ORGANIZATION","ROLE_INDIVIDUAL"})
-    void updateActivity(@Valid @RequestBody Activity activity, @PathVariable String id) {
+    void updateActivity(@Valid @RequestBody Activity activity, @PathVariable Long id) {
 
     }
+
 }

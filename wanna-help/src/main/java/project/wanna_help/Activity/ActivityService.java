@@ -38,12 +38,12 @@ public class ActivityService {
         return activitiesRepository.save(activity);
     }
 
-    public void applyForActivity(Long Id, ApplicationDto dto) {
+    public String applyForActivity(Long Id, ApplicationDto dto) {
         Optional<Activity> optionalActivity = activitiesRepository.findById(Id);
         Optional<Volunteer> optionalVolunteer = volunteerRepository.findById(dto.getVolunteerId());
-        Optional<HelpSeeker> optionalHelpSeeker = helpSeekerRepository.findById(dto.getVolunteerId());
-        if(optionalActivity.isEmpty() || optionalVolunteer.isEmpty() || optionalHelpSeeker.isEmpty()) {
-            return;
+        Optional<HelpSeeker> optionalHelpSeeker = helpSeekerRepository.findById(dto.getHelpSeekerId());
+        if (optionalActivity.isEmpty() || optionalVolunteer.isEmpty() || optionalHelpSeeker.isEmpty()) {
+            return "activity not found";
         }
         Activity selectedActivity = optionalActivity.get();
         Volunteer volunteer = optionalVolunteer.get();
@@ -54,35 +54,36 @@ public class ActivityService {
         helpSeeker.getApplications().add(selectedActivity);
         volunteerRepository.save(volunteer);
         helpSeekerRepository.save(helpSeeker);
+        return "applied successful";
 
     }
 
     public void cancelPendingActivity(Long Id, ApplicationDto dto) {
         Optional<Activity> optionalActivity = activitiesRepository.findById(Id);
-        if(optionalActivity.isEmpty()) {
+        if (optionalActivity.isEmpty()) {
             return;
         }
-            Activity selectedActivity = optionalActivity.get();
-            selectedActivity.setStatus(Status.PUBLISHED);
-            //selectedActivity.setPending = false; // set pending boolean to true
-            activitiesRepository.save(selectedActivity);
+        Activity selectedActivity = optionalActivity.get();
+        selectedActivity.setStatus(Status.PUBLISHED);
+        //selectedActivity.setPending = false; // set pending boolean to true
+        activitiesRepository.save(selectedActivity);
 
     }
 
     public Activity displayThisActivity(Long Id) {
         Optional<Activity> optionalActivity = activitiesRepository.findById(Id);
-        if(optionalActivity.isEmpty()) {
+        if (optionalActivity.isEmpty()) {
             return null;  // Possibly some message that this activity was not found could be displayed
 
         }
-            Activity selectedActivity = optionalActivity.get();
-            return selectedActivity;
-        }
+        Activity selectedActivity = optionalActivity.get();
+        return selectedActivity;
+    }
 
 
     public void displayThisActivity(Long Id, Activity activity) {
         Optional<Activity> optionalActivity = activitiesRepository.findById(Id);
-        if(optionalActivity.isPresent()) {
+        if (optionalActivity.isPresent()) {
             Activity selectedActivity = optionalActivity.get();
             selectedActivity.setTitle(activity.getTitle());
             selectedActivity.setDescription(activity.getDescription());
@@ -91,5 +92,7 @@ public class ActivityService {
             selectedActivity.setEndDate(activity.getEndDate());
         }
 
+
     }
+
 }

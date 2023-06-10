@@ -131,4 +131,18 @@ public class AppUser {
         this.failedLoginAttempts = failedLoginAttempts;
     }
 
+    @Override
+    public String toString() {
+        return "AppUser{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", fullName='" + fullName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", address='" + address + '\'' +
+                ", failedLoginAttempts=" + failedLoginAttempts +
+                '}';
+    }
 }

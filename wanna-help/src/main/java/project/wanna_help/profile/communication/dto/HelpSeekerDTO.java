@@ -19,21 +19,10 @@ public class HelpSeekerDTO {
     private LocalDate dateOfBirth;
     private String address;
 
-    private List<Rating> ratings;
+    private double averageRating;
 
+    private int totalRatings;
 
-    public HelpSeekerDTO() {
-    }
-
-    public HelpSeekerDTO(String email, String username, UserRole userRole, String fullName, LocalDate dateOfBirth, String address, List<Rating> ratings) {
-        this.email = email;
-        this.username = username;
-        this.userRole = userRole;
-        this.fullName = fullName;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.ratings = ratings;
-    }
 
     public String getEmail() {
         return email;
@@ -83,11 +72,33 @@ public class HelpSeekerDTO {
         this.address = address;
     }
 
-    public List<Rating> getRatings() {
-        return ratings;
+    public double getAverageRating() {
+        return averageRating;
     }
 
-    public void setRatings(List<Rating> ratings) {
-        this.ratings = ratings;
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public int getTotalRatings() {
+        return totalRatings;
+    }
+
+    public void setTotalRatings(int totalRatings) {
+        this.totalRatings = totalRatings;
+    }
+
+    public HelpSeekerDTO() {
+    }
+
+    public HelpSeekerDTO(String email, String username, UserRole userRole, String fullName, LocalDate dateOfBirth, String address, double averageRating, int totalRatings) {
+        this.email = email;
+        this.username = username;
+        this.userRole = userRole;
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.averageRating = averageRating;
+        this.totalRatings = totalRatings;
     }
 }

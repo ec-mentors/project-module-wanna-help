@@ -1,25 +1,44 @@
 package project.wanna_help.profile.persistence.domain;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 @Entity
 public class Rating {
     @Id
     @GeneratedValue
     private Long id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private HelpSeeker helpSeeker;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Volunteer volunteer;
-    @Size(min = 1, max = 5)
+
+    @Range(min = 1, max = 5, message = "rating should be integer between 1 and 5")
     private int rating;
-    public Rating() {
+    private String comment;
+
+    public Rating(HelpSeeker helpSeeker, Volunteer volunteer, int rating, String comment) {
+        this.helpSeeker = helpSeeker;
+        this.volunteer = volunteer;
+        this.rating = rating;
+        this.comment = comment;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public Rating(HelpSeeker helpSeeker, Volunteer volunteer, int rating) {
         this.helpSeeker = helpSeeker;
         this.volunteer = volunteer;
         this.rating = rating;
+    }
+
+    public Rating() {
     }
 
     public Long getId() {
@@ -54,3 +73,4 @@ public class Rating {
         this.rating = rating;
     }
 }
+

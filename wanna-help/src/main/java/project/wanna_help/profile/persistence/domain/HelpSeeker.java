@@ -14,16 +14,41 @@ public class HelpSeeker {
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)
-     @MapsId
+    @MapsId
     private AppUser appUser;
 
     //calculate actual rating from ratings
-    @OneToMany(mappedBy = "helpSeeker", cascade = CascadeType.ALL, orphanRemoval = true)
-    //bidirectional and it says who is the leader.
+
+    @OneToMany
     private List<Rating> ratings = new ArrayList<>();
 
+    private double averageRating;
+    private int TotalRatings;
+
+    public HelpSeeker(AppUser appUser, List<Rating> ratings, double averageRating, int totalRatings) {
+        this.appUser = appUser;
+        this.ratings = ratings;
+        this.averageRating = averageRating;
+        TotalRatings = totalRatings;
+    }
 
     public HelpSeeker() {
+    }
+
+    public double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public int getTotalRatings() {
+        return TotalRatings;
+    }
+
+    public void setTotalRatings(int totalRatings) {
+        TotalRatings = totalRatings;
     }
 
     public HelpSeeker(AppUser appUser, List<Rating> ratings) {

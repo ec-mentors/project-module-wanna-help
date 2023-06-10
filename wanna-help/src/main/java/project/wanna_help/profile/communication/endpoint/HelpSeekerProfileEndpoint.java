@@ -4,6 +4,9 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import project.wanna_help.profile.communication.dto.AppUserDTO;
 import project.wanna_help.profile.logic.ProfileService;
+import project.wanna_help.profile.persistence.domain.Rating;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("profile/organization-individual")
@@ -26,6 +29,7 @@ public class HelpSeekerProfileEndpoint {
     AppUserDTO addData(@RequestBody AppUserDTO appUserDTO) {
         return profileService.updateAppUserData(appUserDTO);
     }
+
 
 
 }

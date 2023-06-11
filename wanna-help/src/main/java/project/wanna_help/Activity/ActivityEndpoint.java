@@ -3,7 +3,6 @@ package project.wanna_help.Activity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
-
 import javax.validation.Valid;
 import java.util.List;
 
@@ -32,27 +31,28 @@ public class ActivityEndpoint {
         return activityService.addNewActivity(activity);
     }
 
-    @PutMapping("/{activityId}/apply")
+    @PutMapping("/{id}/apply")
     @Secured("ROLE_VOLUNTEER")
-    void applyingForActivity(@PathVariable Long id) {
-        activityService.applyForActivity(id);
+    String applyingForActivity(@PathVariable Long id, @RequestBody ApplicationDto applicationDto) {
+        return activityService.applyForActivity(id, applicationDto);
     }
 
-    @PutMapping("/{activityId}/cancel")
-    @Secured("ROLE_VOLUNTEER")
-    void cancelPendingActivity(@PathVariable Long id) {
-        activityService.applyForActivity(id);
+    @PutMapping("/{id}/cancel")
+    @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
+    String cancelPendingActivity(@PathVariable Long id, @RequestBody ApplicationDto applicationDto) {
+        return activityService.cancelPendingActivity(id, applicationDto);
     }
 
     @GetMapping("/{activityId}/manage")
     @Secured({"ROLE_ORGANIZATION","ROLE_INDIVIDUAL"})
-    Activity displayActivity(@PathVariable Long id) {
-        return activityService.displayThisActivity(id);
+    Activity displayActivity(@PathVariable Long activityId) {
+        return activityService.displayThisActivity(activityId);
     }
 
     @PutMapping("/{activityId}/manage")
     @Secured({"ROLE_ORGANIZATION","ROLE_INDIVIDUAL"})
-    void updateActivity(@Valid @RequestBody Activity activity, @PathVariable String id) {
-
+    void updateActivity(@Valid @RequestBody Activity activity, @PathVariable Long activityId) {
+        activityService.updateThisActivity(activity, activityId);
     }
+
 }

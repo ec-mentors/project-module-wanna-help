@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 public class Activity {
@@ -35,6 +37,10 @@ public class Activity {
     private boolean pending;
     private boolean done;
     private boolean aborted;
+
+    private String comment;
+
+    private LocalDateTime timeStamp;
 
     public Activity() {
     }
@@ -146,5 +152,20 @@ public class Activity {
     public void setAborted(boolean aborted) {
         this.aborted = aborted;
     }
-}
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public LocalDateTime getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(LocalDateTime timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+}

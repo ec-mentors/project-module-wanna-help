@@ -1,6 +1,7 @@
 package project.wanna_help.endpoint;
 
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,74 +10,84 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import project.wanna_help.logic.RegistrationService;
-import project.wanna_help.persistence.domain.UserRole;
-import project.wanna_help.persistence.dto.LoginDto;
-import project.wanna_help.logic.LoginService;
 import project.wanna_help.persistence.domain.AppUser;
+import project.wanna_help.persistence.domain.UserRole;
+import project.wanna_help.persistence.repository.AppUserRepository;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
 
-//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//class LoginEndpointTest {
-//
-//    @Autowired
-//    TestRestTemplate testRestTemplate;
-//
-//    @MockBean
-//    LoginService loginService;
-//
-//    String url = "/users/login";
-//
-//    @Test
-//    void login() {
-//        LoginDto loginDto = new LoginDto();
-//        loginDto.setUsernameOrEmail("Tomi84");
-//        loginDto.setPassword("tomtom84");
-//        when(loginService.login(loginDto.getUsernameOrEmail(), loginDto.getPassword())).thenReturn(Optional.of(new AppUser()));
-//
-//        testRestTemplate.postForObject(url, loginDto, String.class);
-//        Mockito.verify(loginService).login(loginDto.getUsernameOrEmail(), loginDto.getPassword());
-//
-//    }
-//
-//
-//}
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
 public class LoginEndpointTest {
 
     @Autowired
     TestRestTemplate testRestTemplate;
-    @Autowired
+    @MockBean
     RegistrationService registrationService;
+    @MockBean
+    AppUserRepository appUserRepository;
 
+    @MockBean
+    PasswordEncoder passwordEncoder;
 
-    @Before
+    AppUser appUser = new AppUser();
+    String password = "testpassword123";
+    String username= "testuser1234";
+
+    @BeforeEach
     public void registration() {
-
-        AppUser appUser = new AppUser();
-        appUser.setEmail("testemail");
-        appUser.setUsername("testuser");
-        appUser.setPassword("testpassword");
+        appUser.setEmail("testemail@email.com");
+        appUser.setUsername(username);
+        appUser.setPassword(password);
         appUser.setRole(UserRole.VOLUNTEER);
         appUser.setFullName("test test");
-
-
-        registrationService.register(appUser);
-
     }
 
     @Test
     void login_valid() {
+        Mockito.when(passwordEncoder.matches(password, password)).thenReturn(true);
+        Mockito.when(appUserRepository.findOneByUsernameOrEmail(username, username)).thenReturn(Optional.of(appUser));
 
-        ResponseEntity<String> result = testRestTemplate.withBasicAuth("testuser", "testpassword")
+        ResponseEntity<String> result = testRestTemplate.withBasicAuth(username, password)
                 .postForEntity("/users/login", null, String.class);
         assertEquals(HttpStatus.OK, result.getStatusCode());
+
+    }
+
+    @Test
+    void login_inValid_Password() {
+        Mockito.when(passwordEncoder.matches(password, password)).thenReturn(true);
+        Mockito.when(appUserRepository.findOneByUsernameOrEmail(username, username)).thenReturn(Optional.of(appUser));
+
+        ResponseEntity<String> result = testRestTemplate.withBasicAuth(username, "invalid123")
+                .postForEntity("/users/login", null, String.class);
+        assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());
+
+    }
+
+    @Test
+    void login_inValid_Username() {
+        Mockito.when(passwordEncoder.matches(password, password)).thenReturn(true);
+        Mockito.when(appUserRepository.findOneByUsernameOrEmail(username, username)).thenReturn(Optional.of(appUser));
+
+        ResponseEntity<String> result = testRestTemplate.withBasicAuth("invalid", password)
+                .postForEntity("/users/login", null, String.class);
+        assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());
+
+    }
+    @Test
+    void login_inValid_ROLE() {
+        appUser.setRole(null);
+        Mockito.when(passwordEncoder.matches(password, password)).thenReturn(true);
+        Mockito.when(appUserRepository.findOneByUsernameOrEmail(username, username)).thenReturn(Optional.of(appUser));
+
+        ResponseEntity<String> result = testRestTemplate.withBasicAuth(username, password)
+                .postForEntity("/users/login", null, String.class);
+        assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());
 
     }
 

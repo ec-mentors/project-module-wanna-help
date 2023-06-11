@@ -1,11 +1,10 @@
 package project.wanna_help.profile.communication.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import project.wanna_help.Activity.Activity;
 import project.wanna_help.profile.persistence.domain.ExperienceLevel;
 
 import java.time.LocalDate;
-import java.util.Set;
+
 
 public class VolunteerDTO {
 
@@ -17,18 +16,15 @@ public class VolunteerDTO {
 
     private ExperienceLevel experienceLevel;
 
-    private Set<Activity> applications;
-
     public VolunteerDTO() {
     }
 
-    public VolunteerDTO(String username, LocalDate dateOfBirth, String address, String mySkills, ExperienceLevel experienceLevel, Set<Activity> applications) {
+    public VolunteerDTO(String username, LocalDate dateOfBirth, String address, String mySkills, ExperienceLevel experienceLevel) {
         this.username = username;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.mySkills = mySkills;
         this.experienceLevel = experienceLevel;
-        this.applications = applications;
     }
 
     public String getUsername() {
@@ -69,13 +65,5 @@ public class VolunteerDTO {
 
     public void setExperienceLevel(ExperienceLevel experienceLevel) {
         this.experienceLevel = experienceLevel;
-    }
-
-    public Set<Activity> getApplications() {
-        return applications;
-    }
-
-    public void setApplications(Set<Activity> applications) {
-        this.applications = applications;
     }
 }

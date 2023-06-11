@@ -1,13 +1,11 @@
 package project.wanna_help.profile.communication.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import project.wanna_help.Activity.Activity;
 import project.wanna_help.persistence.domain.UserRole;
 import project.wanna_help.profile.persistence.domain.Rating;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public class HelpSeekerDTO {
 
@@ -15,20 +13,16 @@ public class HelpSeekerDTO {
     private String username;
     private UserRole userRole;
     private String fullName;
-
     @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate dateOfBirth;
     private String address;
 
     private List<Rating> ratings;
 
-    private Set<Activity> applications;
-
-
     public HelpSeekerDTO() {
     }
 
-    public HelpSeekerDTO(String email, String username, UserRole userRole, String fullName, LocalDate dateOfBirth, String address, List<Rating> ratings, Set<Activity> applications) {
+    public HelpSeekerDTO(String email, String username, UserRole userRole, String fullName, LocalDate dateOfBirth, String address, List<Rating> ratings) {
         this.email = email;
         this.username = username;
         this.userRole = userRole;
@@ -36,7 +30,6 @@ public class HelpSeekerDTO {
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.ratings = ratings;
-        this.applications = applications;
     }
 
     public String getEmail() {
@@ -93,13 +86,5 @@ public class HelpSeekerDTO {
 
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
-    }
-
-    public Set<Activity> getApplications() {
-        return applications;
-    }
-
-    public void setApplications(Set<Activity> applications) {
-        this.applications = applications;
     }
 }

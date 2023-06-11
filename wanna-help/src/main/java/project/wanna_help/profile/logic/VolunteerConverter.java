@@ -14,7 +14,6 @@ public class VolunteerConverter {
         volunteerDTO.setAddress(volunteer.getAppUser().getAddress());
         volunteerDTO.setMySkills(volunteer.getMySkills());
         volunteerDTO.setExperienceLevel(volunteer.getExperienceLevel());
-        volunteerDTO.setApplications(volunteer.getApplications());
         return volunteerDTO;
     }
 
@@ -24,7 +23,6 @@ public class VolunteerConverter {
         volunteer.getAppUser().setDateOfBirth(volunteerDTO.getDateOfBirth());
         volunteer.getAppUser().setAddress(volunteerDTO.getAddress());
         volunteer.setMySkills(volunteerDTO.getMySkills());
-        volunteer.setApplications(volunteerDTO.getApplications());
         return volunteer;
 
     }

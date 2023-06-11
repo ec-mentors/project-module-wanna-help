@@ -1,7 +1,7 @@
 package project.wanna_help.profile.persistence.domain;
 
-import project.wanna_help.Activity.Activity;
-import project.wanna_help.persistence.domain.AppUser;
+import project.wanna_help.activity.persistence.domain.Application;
+import project.wanna_help.appuser.persistence.domain.AppUser;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
@@ -22,14 +22,13 @@ public class Volunteer {
     private String mySkills;
     @Enumerated(EnumType.STRING)
     private ExperienceLevel experienceLevel = ExperienceLevel.BRONZE;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Activity> applications;
+    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Application> applications;
 
     public Volunteer() {
     }
 
-    public Volunteer(AppUser appUser, String mySkills, ExperienceLevel experienceLevel, Set<Activity> applications) {
+    public Volunteer(AppUser appUser, String mySkills, ExperienceLevel experienceLevel, Set<Application> applications) {
         this.appUser = appUser;
         this.mySkills = mySkills;
         this.experienceLevel = experienceLevel;
@@ -74,11 +73,11 @@ public class Volunteer {
         this.experienceLevel = experienceLevel;
     }
 
-    public Set<Activity> getApplications() {
+    public Set<Application> getApplications() {
         return applications;
     }
 
-    public void setApplications(Set<Activity> applications) {
+    public void setApplications(Set<Application> applications) {
         this.applications = applications;
     }
 }

@@ -1,7 +1,7 @@
 package project.wanna_help.profile.communication.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import project.wanna_help.persistence.domain.UserRole;
+import project.wanna_help.appuser.persistence.domain.UserRole;
 import project.wanna_help.profile.persistence.domain.Rating;
 
 import java.time.LocalDate;

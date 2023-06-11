@@ -1,6 +1,5 @@
 package project.wanna_help.endpoint;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -11,10 +10,11 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import project.wanna_help.logic.RegistrationService;
-import project.wanna_help.persistence.domain.AppUser;
-import project.wanna_help.persistence.domain.UserRole;
-import project.wanna_help.persistence.repository.AppUserRepository;
+import project.wanna_help.appuser.logic.RegistrationService;
+import project.wanna_help.appuser.persistence.domain.AppUser;
+import project.wanna_help.appuser.persistence.domain.UserRole;
+import project.wanna_help.appuser.persistence.repository.AppUserRepository;
+
 
 import java.util.Optional;
 
@@ -36,7 +36,7 @@ public class LoginEndpointTest {
 
     AppUser appUser = new AppUser();
     String password = "testpassword123";
-    String username= "testuser1234";
+    String username = "testuser1234";
 
     @BeforeEach
     public void registration() {
@@ -79,6 +79,7 @@ public class LoginEndpointTest {
         assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());
 
     }
+
     @Test
     void login_inValid_ROLE() {
         appUser.setRole(null);

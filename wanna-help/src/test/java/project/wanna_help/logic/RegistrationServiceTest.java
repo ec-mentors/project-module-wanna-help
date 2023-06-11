@@ -10,9 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import project.wanna_help.persistence.domain.AppUser;
-import project.wanna_help.persistence.domain.UserRole;
-import project.wanna_help.persistence.repository.AppUserRepository;
+import project.wanna_help.appuser.logic.RegistrationService;
+import project.wanna_help.appuser.persistence.domain.AppUser;
+import project.wanna_help.appuser.persistence.domain.UserRole;
+import project.wanna_help.appuser.persistence.repository.AppUserRepository;
 
 import javax.validation.ConstraintViolationException;
 import java.util.stream.Stream;

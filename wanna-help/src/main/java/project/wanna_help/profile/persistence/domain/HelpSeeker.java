@@ -1,7 +1,7 @@
 package project.wanna_help.profile.persistence.domain;
 
-import project.wanna_help.Activity.Activity;
-import project.wanna_help.persistence.domain.AppUser;
+import project.wanna_help.activity.persistence.domain.Activity;
+import project.wanna_help.appuser.persistence.domain.AppUser;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,17 +24,17 @@ public class HelpSeeker {
     //bidirectional and it says who is the leader.
     private List<Rating> ratings = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private Set<Activity> applications;
-
+    //bidirectional and it says who is the leader.
+    @OneToMany(mappedBy = "helpSeeker", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Activity> activities;
 
     public HelpSeeker() {
     }
 
-    public HelpSeeker(AppUser appUser, List<Rating> ratings, Set<Activity> applications) {
+    public HelpSeeker(AppUser appUser, List<Rating> ratings, Set<Activity> activities) {
         this.appUser = appUser;
         this.ratings = ratings;
-        this.applications = applications;
+        this.activities = activities;
     }
 
     public HelpSeeker(AppUser appUser) {
@@ -65,11 +65,11 @@ public class HelpSeeker {
         this.ratings = ratings;
     }
 
-    public Set<Activity> getApplications() {
-        return applications;
+    public Set<Activity> getActivities() {
+        return activities;
     }
 
-    public void setApplications(Set<Activity> applications) {
-        this.applications = applications;
+    public void setActivities(Set<Activity> activities) {
+        this.activities = activities;
     }
 }

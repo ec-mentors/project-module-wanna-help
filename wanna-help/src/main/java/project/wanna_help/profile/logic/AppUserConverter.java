@@ -1,7 +1,7 @@
 package project.wanna_help.profile.logic;
 
 import org.springframework.stereotype.Service;
-import project.wanna_help.persistence.domain.AppUser;
+import project.wanna_help.appuser.persistence.domain.AppUser;
 import project.wanna_help.profile.communication.dto.AppUserDTO;
 
 @Service

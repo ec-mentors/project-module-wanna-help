@@ -19,24 +19,19 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ActivityService {
 
     private final ActivityRepository activityRepository;
-    private final VolunteerRepository volunteerRepository;
-
-    private final HelpSeekerRepository helpSeekerRepository;
 
     private final ApplicationRepository applicationRepository;
 
     private final UserHelper userHelper;
 
-
-    public ActivityService(ActivityRepository activityRepository, VolunteerRepository volunteerRepository, HelpSeekerRepository helpSeekerRepository, ApplicationRepository applicationRepository, UserHelper userHelper) {
+    public ActivityService(ActivityRepository activityRepository, ApplicationRepository applicationRepository, UserHelper userHelper) {
         this.activityRepository = activityRepository;
-        this.volunteerRepository = volunteerRepository;
-        this.helpSeekerRepository = helpSeekerRepository;
         this.applicationRepository = applicationRepository;
         this.userHelper = userHelper;
     }
@@ -62,19 +57,18 @@ public class ActivityService {
     }
 
     //volunteer display specific activity
-    public Activity displayThisActivity(Long Id) {
-        Optional<Activity> optionalActivity = activityRepository.findById(Id);
+    public Activity displayThisActivity(Long id) {
+        Optional<Activity> optionalActivity = activityRepository.findById(id);
         if (optionalActivity.isEmpty()) {
             return null;  // Possibly some message that this activity was not found could be displayed
 
         }
-        Activity selectedActivity = optionalActivity.get();
-        return selectedActivity;
+        return optionalActivity.get();
     }
 
     //Volunteer applies for activity
     public String applyForActivity(Long id) {
-        Optional<Activity> oActivity = activityRepository.findById(id);
+        Optional<Activity> oActivity = activityRepository.findByIdAndActivityStatus(id,ActivityStatus.PUBLISHED);
         if (oActivity.isEmpty()) {
             throw new EntityNotFoundException("no activity found");
         }
@@ -115,14 +109,14 @@ public class ActivityService {
     //volunteer get applications in pending
     public List<Application> displayApplicationInProgress() {
         Volunteer currentVolunteer = userHelper.getCurrentVolunteer();
-        List<Application> applications = applicationRepository.findByVolunteerAndApplicationStatus(currentVolunteer, ApplicationStatus.PENDING);
-        return applications;
+        return applicationRepository.findByVolunteerAndApplicationStatus(currentVolunteer, ApplicationStatus.PENDING);
     }
 
-    //volunteer cancel activity
+    //volunteer cancel application
     //ROLE_VOLUNTEER
     public String cancelPendingApplication(Long id, @Validated @NotBlank(message = "Please write the comment to cancel the activity successfully.") String comment) {
-        Optional<Application> oApplication = applicationRepository.findById(id);
+        Volunteer currentVolunteer = userHelper.getCurrentVolunteer();
+        Optional<Application> oApplication = applicationRepository.findByIdAndVolunteerAndApplicationStatus(id,currentVolunteer, ApplicationStatus.PENDING);
         if (oApplication.isEmpty()) {
             throw new EntityNotFoundException("application not found");
         }
@@ -163,15 +157,14 @@ public class ActivityService {
     //helpseeker overview his one in-progress activities -> secured Helpseeker
     public List<Activity> viewInProgressActivities() {
         HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
-        currentHelpSeeker.getActivities();
         return activityRepository.findByStatusAndHelpSeeker(ActivityStatus.IN_PROGRESS, currentHelpSeeker);
     }
 
 
     //helpseeker update activity  -> secured Helpseeker
-    public void updateThisActivity(Long Id) {
+    public void updateThisActivity(Long id) {
         HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
-        Optional<Activity> optionalActivity = activityRepository.findByIdAndHelpSeeker(Id, currentHelpSeeker);
+        Optional<Activity> optionalActivity = activityRepository.findByIdAndHelpSeeker(id, currentHelpSeeker);
         if (optionalActivity.isPresent()) {
             Activity activity = optionalActivity.get();
             activity.setTitle(activity.getTitle());

@@ -48,12 +48,12 @@ public class ActivityService {
     //helpseeker overview his own published activities -> secured Helpseeker
     public List<Activity> helpSeekerViewPublishedActivities() {
         HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
-        return activityRepository.findByStatusAndHelpSeeker(ActivityStatus.PUBLISHED, currentHelpSeeker);
+        return activityRepository.findByActivityStatusAndHelpSeeker(ActivityStatus.PUBLISHED, currentHelpSeeker);
     }
 
     //volunteer overview all activities:
     public List<Activity> volunteerViewPublishedActivities() {
-        return activityRepository.findByStatus(ActivityStatus.PUBLISHED);
+        return activityRepository.findByActivityStatus(ActivityStatus.PUBLISHED);
     }
 
     //volunteer display specific activity
@@ -123,6 +123,7 @@ public class ActivityService {
         Application application = oApplication.get();
         application.setApplicationStatus(ApplicationStatus.ABORTED);
         application.setComment(comment);
+        applicationRepository.save(application);
         return "The activity was canceled successfully.";
     }
 
@@ -157,21 +158,21 @@ public class ActivityService {
     //helpseeker overview his one in-progress activities -> secured Helpseeker
     public List<Activity> viewInProgressActivities() {
         HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
-        return activityRepository.findByStatusAndHelpSeeker(ActivityStatus.IN_PROGRESS, currentHelpSeeker);
+        return activityRepository.findByActivityStatusAndHelpSeeker(ActivityStatus.IN_PROGRESS, currentHelpSeeker);
     }
 
 
     //helpseeker update activity  -> secured Helpseeker
-    public void updateThisActivity(Long id) {
+    public void updateThisActivity(Long id, Activity updatedActivity) {
         HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
         Optional<Activity> optionalActivity = activityRepository.findByIdAndHelpSeeker(id, currentHelpSeeker);
         if (optionalActivity.isPresent()) {
             Activity activity = optionalActivity.get();
-            activity.setTitle(activity.getTitle());
-            activity.setDescription(activity.getDescription());
-            activity.setRecommendedSkills(activity.getRecommendedSkills());
-            activity.setStartDate(activity.getStartDate());
-            activity.setEndDate(activity.getEndDate());
+            activity.setTitle(updatedActivity.getTitle());
+            activity.setDescription(updatedActivity.getDescription());
+            activity.setRecommendedSkills(updatedActivity.getRecommendedSkills());
+            activity.setStartDate(updatedActivity.getStartDate());
+            activity.setEndDate(updatedActivity.getEndDate());
         }
 
 //        public void updateThisActivity(Activity activity, Long Id) {

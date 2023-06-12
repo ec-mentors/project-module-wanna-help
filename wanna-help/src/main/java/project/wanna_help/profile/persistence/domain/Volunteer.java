@@ -1,5 +1,6 @@
 package project.wanna_help.profile.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import project.wanna_help.activity.persistence.domain.Application;
 import project.wanna_help.appuser.persistence.domain.AppUser;
 
@@ -23,6 +24,7 @@ public class Volunteer {
     @Enumerated(EnumType.STRING)
     private ExperienceLevel experienceLevel = ExperienceLevel.BRONZE;
     @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Application> applications;
 
     public Volunteer() {

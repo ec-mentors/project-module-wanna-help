@@ -1,5 +1,6 @@
 package project.wanna_help.activity.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import project.wanna_help.profile.persistence.domain.Volunteer;
 
 import javax.persistence.*;
@@ -15,13 +16,14 @@ public class Application {
     private Long id;
     @Enumerated(EnumType.STRING)
     private ApplicationStatus applicationStatus;
-    @NotBlank
+
     private String comment;
     @NotNull
     private LocalDateTime timeStamp;
     @ManyToOne
     private Activity activity;
     @ManyToOne
+    @JsonBackReference
     private Volunteer volunteer;
 
     public Application() {

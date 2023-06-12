@@ -1,5 +1,6 @@
 package project.wanna_help.activity.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import project.wanna_help.profile.persistence.domain.HelpSeeker;
 
 import javax.persistence.*;
@@ -34,7 +35,8 @@ public class Activity {
     @Enumerated(EnumType.STRING)
     private ActivityStatus activityStatus;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     private HelpSeeker helpSeeker;
 
 
@@ -122,4 +124,6 @@ public class Activity {
     public void setHelpSeeker(HelpSeeker helpSeeker) {
         this.helpSeeker = helpSeeker;
     }
+
+
 }

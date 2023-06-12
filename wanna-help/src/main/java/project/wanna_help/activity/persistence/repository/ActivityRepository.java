@@ -10,12 +10,12 @@ import java.util.Optional;
 
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
 
-    List<Activity> findByStatus(ActivityStatus activityStatus);
+    List<Activity> findByActivityStatus(ActivityStatus activityStatus);
 
     Optional<Activity> findByIdAndActivityStatus(Long id, ActivityStatus activityStatus);
 
 
-    List<Activity> findByStatusAndHelpSeeker(ActivityStatus activityStatus, HelpSeeker helpSeeker);
+    List<Activity> findByActivityStatusAndHelpSeeker(ActivityStatus activityStatus, HelpSeeker helpSeeker);
 
     Optional<Activity> findByIdAndHelpSeeker(Long id, HelpSeeker helpSeeker);
 

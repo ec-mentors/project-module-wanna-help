@@ -1,5 +1,7 @@
 package project.wanna_help.profile.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import project.wanna_help.activity.persistence.domain.Activity;
 import project.wanna_help.appuser.persistence.domain.AppUser;
 
@@ -25,7 +27,10 @@ public class HelpSeeker {
     private List<Rating> ratings = new ArrayList<>();
 
     //bidirectional and it says who is the leader.
-    @OneToMany(mappedBy = "helpSeeker", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "helpSeeker",
+               cascade = CascadeType.ALL,
+               orphanRemoval = true)
+    @JsonManagedReference
     private Set<Activity> activities;
 
     public HelpSeeker() {

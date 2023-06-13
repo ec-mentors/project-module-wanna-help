@@ -19,6 +19,8 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
 
     Optional<Activity> findByIdAndHelpSeeker(Long id, HelpSeeker helpSeeker);
 
+    Optional<Activity> findByIdAndHelpSeekerAndActivityStatus(Long id, HelpSeeker helpSeeker,ActivityStatus activityStatus);
+
 
 
 }

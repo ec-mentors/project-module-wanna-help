@@ -30,7 +30,7 @@ public class HelpSeeker {
     @OneToMany(mappedBy = "helpSeeker",
                cascade = CascadeType.ALL,
                orphanRemoval = true)
-    @JsonManagedReference
+//    @JsonManagedReference
     private Set<Activity> activities;
 
     public HelpSeeker() {

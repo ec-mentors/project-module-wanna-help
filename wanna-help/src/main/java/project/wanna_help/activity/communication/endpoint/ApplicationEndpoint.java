@@ -21,4 +21,14 @@ public class ApplicationEndpoint {
         return applicationService.acceptThisActivity(id);
     }
 
+    @PutMapping("/{applicationId}/done")
+    @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
+    void markActivityDone(@PathVariable Long applicationId) {
+        applicationService.markActivityDone(applicationId);
+    }
+
+
+
+
+
 }

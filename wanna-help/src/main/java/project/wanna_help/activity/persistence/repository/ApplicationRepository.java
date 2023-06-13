@@ -1,6 +1,7 @@
 package project.wanna_help.activity.persistence.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import project.wanna_help.activity.persistence.domain.Activity;
 import project.wanna_help.activity.persistence.domain.Application;
 import project.wanna_help.activity.persistence.domain.ApplicationStatus;
 import project.wanna_help.profile.persistence.domain.HelpSeeker;
@@ -17,4 +18,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
     Optional<Application> findByIdAndVolunteerAndApplicationStatus(Long id, Volunteer volunteer,ApplicationStatus applicationStatus);
 
     Optional<Application> findByIdAndApplicationStatusAndActivity_HelpSeeker(Long id, ApplicationStatus applicationStatus, HelpSeeker helpSeeker);
+
+    List<Application> findByActivity(Activity activity);
+
 }

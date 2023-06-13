@@ -15,7 +15,8 @@ public class HelpSeekerConverter {
         helpSeekerDTO.setFullName(helpSeeker.getAppUser().getFullName());
         helpSeekerDTO.setDateOfBirth(helpSeeker.getAppUser().getDateOfBirth());
         helpSeekerDTO.setAddress(helpSeeker.getAppUser().getAddress());
-        helpSeekerDTO.setRatings(helpSeeker.getRatings());
+        helpSeekerDTO.setAverageRating(helpSeeker.getAverageRating());
+        helpSeekerDTO.setTotalRatings(helpSeeker.getTotalRatings());
         return helpSeekerDTO;
     }
 

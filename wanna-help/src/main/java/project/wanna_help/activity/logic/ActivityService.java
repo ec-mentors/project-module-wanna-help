@@ -11,15 +11,12 @@ import project.wanna_help.activity.persistence.repository.ApplicationRepository;
 import project.wanna_help.appuser.logic.UserHelper;
 import project.wanna_help.profile.persistence.domain.HelpSeeker;
 import project.wanna_help.profile.persistence.domain.Volunteer;
-import project.wanna_help.profile.persistence.repository.HelpSeekerRepository;
-import project.wanna_help.profile.persistence.repository.VolunteerRepository;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class ActivityService {
@@ -79,6 +76,7 @@ public class ActivityService {
         application.setActivity(activity);
         application.setApplicationStatus(ApplicationStatus.PENDING);
         application.setTimeStamp(LocalDateTime.now());
+        application.getActivity().setActivityStatus(ActivityStatus.IN_PROGRESS);
         applicationRepository.save(application);
         return "applied successful";
 
@@ -200,6 +198,4 @@ public class ActivityService {
         applicationRepository.save(application);
         return "The activity was accepted successfully.";
     }
-
-
 }

@@ -21,7 +21,6 @@ public class HelpSeeker {
     @MapsId
     private AppUser appUser;
 
-    //calculate actual rating from ratings
     @OneToMany(mappedBy = "helpSeeker", cascade = CascadeType.ALL, orphanRemoval = true)
     //bidirectional and it says who is the leader.
     private List<Rating> ratings = new ArrayList<>();
@@ -30,8 +29,11 @@ public class HelpSeeker {
     @OneToMany(mappedBy = "helpSeeker",
                cascade = CascadeType.ALL,
                orphanRemoval = true)
-    @JsonManagedReference
+//    @JsonManagedReference
     private Set<Activity> activities;
+
+    private double averageRating;
+    private int totalRatings;
 
     public HelpSeeker() {
     }
@@ -40,6 +42,30 @@ public class HelpSeeker {
         this.appUser = appUser;
         this.ratings = ratings;
         this.activities = activities;
+    }
+
+    public HelpSeeker(AppUser appUser, List<Rating> ratings, Set<Activity> activities, double averageRating, int totalRatings) {
+        this.appUser = appUser;
+        this.ratings = ratings;
+        this.activities = activities;
+        this.averageRating = averageRating;
+        this.totalRatings = totalRatings;
+    }
+
+    public double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public int getTotalRatings() {
+        return totalRatings;
+    }
+
+    public void setTotalRatings(int totalRatings) {
+        this.totalRatings = totalRatings;
     }
 
     public HelpSeeker(AppUser appUser) {

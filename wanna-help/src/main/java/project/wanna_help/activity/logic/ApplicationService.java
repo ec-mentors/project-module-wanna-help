@@ -28,7 +28,7 @@ public class ApplicationService {
 
     public String acceptThisActivity(Long applicationId) {
         HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
-        Optional<Application> oApplication = applicationRepository.findByApplicationIdAndApplicationStatusAndActivity_HelpSeeker(applicationId, ApplicationStatus.PENDING, currentHelpSeeker);
+        Optional<Application> oApplication = applicationRepository.findByIdAndApplicationStatusAndActivity_HelpSeeker(applicationId, ApplicationStatus.PENDING, currentHelpSeeker);
         if (oApplication.isEmpty()) {
             throw new EntityNotFoundException("application not found");
         }
@@ -40,7 +40,7 @@ public class ApplicationService {
 
     public String declineApplication(Long applicationId) {
         HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
-        Optional<Application> oApplication =  applicationRepository.findByApplicationIdAndApplicationStatusAndActivity_HelpSeeker(applicationId, ApplicationStatus.PENDING, currentHelpSeeker);
+        Optional<Application> oApplication =  applicationRepository.findByIdAndApplicationStatusAndActivity_HelpSeeker(applicationId, ApplicationStatus.PENDING, currentHelpSeeker);
         if (oApplication.isEmpty()) {
             throw new EntityNotFoundException("application not found");
         }

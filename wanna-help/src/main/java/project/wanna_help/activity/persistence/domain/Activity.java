@@ -1,6 +1,8 @@
 package project.wanna_help.activity.persistence.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import project.wanna_help.profile.persistence.domain.HelpSeeker;
 
 import javax.persistence.*;
@@ -9,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Activity {
@@ -56,7 +59,7 @@ public class Activity {
         this.endDate = endDate;
     }
 
-    public Activity(String title, String description, String recommendedSkills, LocalDate startDate, LocalDate endDate, ActivityStatus activityStatus) {
+    public Activity(String title, String description, String recommendedSkills, LocalDate startDate, LocalDate endDate, ActivityStatus activityStatus, HelpSeeker helpSeeker, List<Application> applications) {
         this.title = title;
         this.description = description;
         this.recommendedSkills = recommendedSkills;
@@ -66,7 +69,6 @@ public class Activity {
         this.helpSeeker = helpSeeker;
         this.applications = applications;
     }
-
 
     public Long getId() {
         return id;

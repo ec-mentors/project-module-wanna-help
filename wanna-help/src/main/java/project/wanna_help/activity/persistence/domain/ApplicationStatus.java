@@ -2,7 +2,7 @@ package project.wanna_help.activity.persistence.domain;
 
 public enum ApplicationStatus {
 
-    PENDING, DONE, ABORTED, DECLINED
+    PENDING,ENROLLED,DECLINED, DONE, ABORTED
 
 
 

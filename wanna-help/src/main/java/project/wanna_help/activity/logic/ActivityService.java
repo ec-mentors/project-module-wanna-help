@@ -11,15 +11,12 @@ import project.wanna_help.activity.persistence.repository.ApplicationRepository;
 import project.wanna_help.appuser.logic.UserHelper;
 import project.wanna_help.profile.persistence.domain.HelpSeeker;
 import project.wanna_help.profile.persistence.domain.Volunteer;
-import project.wanna_help.profile.persistence.repository.HelpSeekerRepository;
-import project.wanna_help.profile.persistence.repository.VolunteerRepository;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class ActivityService {
@@ -68,7 +65,7 @@ public class ActivityService {
 
     //Volunteer applies for activity
     public String applyForActivity(Long id) {
-        Optional<Activity> oActivity = activityRepository.findByIdAndActivityStatus(id,ActivityStatus.PUBLISHED);
+        Optional<Activity> oActivity = activityRepository.findByIdAndActivityStatus(id, ActivityStatus.PUBLISHED);
         if (oActivity.isEmpty()) {
             throw new EntityNotFoundException("no activity found");
         }
@@ -79,6 +76,7 @@ public class ActivityService {
         application.setActivity(activity);
         application.setApplicationStatus(ApplicationStatus.PENDING);
         application.setTimeStamp(LocalDateTime.now());
+        application.getActivity().setActivityStatus(ActivityStatus.IN_PROGRESS);
         applicationRepository.save(application);
         return "applied successful";
 
@@ -116,7 +114,7 @@ public class ActivityService {
     //ROLE_VOLUNTEER
     public String cancelPendingApplication(Long id, @Validated @NotBlank(message = "Please write the comment to cancel the activity successfully.") String comment) {
         Volunteer currentVolunteer = userHelper.getCurrentVolunteer();
-        Optional<Application> oApplication = applicationRepository.findByIdAndVolunteerAndApplicationStatus(id,currentVolunteer, ApplicationStatus.PENDING);
+        Optional<Application> oApplication = applicationRepository.findByIdAndVolunteerAndApplicationStatus(id, currentVolunteer, ApplicationStatus.PENDING);
         if (oApplication.isEmpty()) {
             throw new EntityNotFoundException("application not found");
         }
@@ -188,6 +186,7 @@ public class ActivityService {
 
 
     }
+
 
 
 }

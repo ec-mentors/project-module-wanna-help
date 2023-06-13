@@ -1,7 +1,6 @@
 package project.wanna_help.activity.persistence.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import project.wanna_help.profile.persistence.domain.HelpSeeker;
 
 import javax.persistence.*;
@@ -40,6 +39,12 @@ public class Activity {
     @JsonBackReference
     private HelpSeeker helpSeeker;
 
+    @OneToMany(
+            mappedBy = "activity",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    List<Application> applications;
+
 
     public Activity() {
     }
@@ -58,6 +63,8 @@ public class Activity {
         this.startDate = startDate;
         this.endDate = endDate;
         this.activityStatus = activityStatus;
+        this.helpSeeker = helpSeeker;
+        this.applications = applications;
     }
 
 
@@ -126,5 +133,11 @@ public class Activity {
         this.helpSeeker = helpSeeker;
     }
 
+    public List<Application> getApplications() {
+        return applications;
+    }
 
+    public void setApplications(List<Application> applications) {
+        this.applications = applications;
+    }
 }

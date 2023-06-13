@@ -1,6 +1,7 @@
 package project.wanna_help.activity.persistence.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import project.wanna_help.profile.persistence.domain.HelpSeeker;
 
@@ -27,10 +28,10 @@ public class Activity {
 
     @Pattern(regexp = "^[A-Za-z0-9 ;]+$", message = "skills should be divided with ; ")
     private String recommendedSkills;
-
+    @JsonFormat(pattern = "dd.MM.yyyy")
     @NotNull(message = "start date is mandatory")
     private LocalDate startDate;
-
+    @JsonFormat(pattern = "dd.MM.yyyy")
     @NotNull(message = "end date is mandatory")
     private LocalDate endDate;
 

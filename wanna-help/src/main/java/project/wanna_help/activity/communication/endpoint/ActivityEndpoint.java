@@ -71,11 +71,6 @@ public class ActivityEndpoint {
         activityService.updateThisActivity(activityId,updatedActivity);
     }
 
-    @PutMapping("/{id}/accept")
-    @Secured({"ROLE_ORGANIZATION","ROLE_INDIVIDUAL"})
-    String acceptActivity(@PathVariable Long id) {
-        return activityService.acceptThisActivity(id);
-    }
 
 
 }

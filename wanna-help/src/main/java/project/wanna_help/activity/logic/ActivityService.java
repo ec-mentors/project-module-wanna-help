@@ -187,15 +187,5 @@ public class ActivityService {
 
     }
 
-    public String acceptThisActivity(Long applicationId) {
-        HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
-        Optional<Application> oApplication = applicationRepository.findByApplicationIdAndApplicationStatusAndActivity_HelpSeeker(applicationId, ApplicationStatus.PENDING, currentHelpSeeker);
-        if (oApplication.isEmpty()) {
-            throw new EntityNotFoundException("application not found");
-        }
-        Application application = oApplication.get();
-        application.setApplicationStatus(ApplicationStatus.ENROLLED);
-        applicationRepository.save(application);
-        return "The activity was accepted successfully.";
-    }
+
 }

@@ -68,7 +68,7 @@ public class ActivityService {
 
     //Volunteer applies for activity
     public String applyForActivity(Long id) {
-        Optional<Activity> oActivity = activityRepository.findByIdAndActivityStatus(id,ActivityStatus.PUBLISHED);
+        Optional<Activity> oActivity = activityRepository.findByIdAndActivityStatus(id, ActivityStatus.PUBLISHED);
         if (oActivity.isEmpty()) {
             throw new EntityNotFoundException("no activity found");
         }
@@ -116,7 +116,7 @@ public class ActivityService {
     //ROLE_VOLUNTEER
     public String cancelPendingApplication(Long id, @Validated @NotBlank(message = "Please write the comment to cancel the activity successfully.") String comment) {
         Volunteer currentVolunteer = userHelper.getCurrentVolunteer();
-        Optional<Application> oApplication = applicationRepository.findByIdAndVolunteerAndApplicationStatus(id,currentVolunteer, ApplicationStatus.PENDING);
+        Optional<Application> oApplication = applicationRepository.findByIdAndVolunteerAndApplicationStatus(id, currentVolunteer, ApplicationStatus.PENDING);
         if (oApplication.isEmpty()) {
             throw new EntityNotFoundException("application not found");
         }
@@ -187,6 +187,18 @@ public class ActivityService {
 //            }
 
 
+    }
+
+    public String acceptThisActivity(Long applicationId) {
+        HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
+        Optional<Application> oApplication = applicationRepository.findByApplicationIdAndApplicationStatusAndActivity_HelpSeeker(applicationId, ApplicationStatus.PENDING, currentHelpSeeker);
+        if (oApplication.isEmpty()) {
+            throw new EntityNotFoundException("application not found");
+        }
+        Application application = oApplication.get();
+        application.setApplicationStatus(ApplicationStatus.ENROLLED);
+        applicationRepository.save(application);
+        return "The activity was accepted successfully.";
     }
 
 

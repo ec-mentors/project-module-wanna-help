@@ -15,10 +15,16 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
 
     List<Application> findByVolunteerAndApplicationStatus(Volunteer volunteer, ApplicationStatus applicationStatus);
 
-    Optional<Application> findByIdAndVolunteerAndApplicationStatus(Long id, Volunteer volunteer,ApplicationStatus applicationStatus);
+    Optional<Application> findByIdAndVolunteerAndApplicationStatus(Long id, Volunteer volunteer, ApplicationStatus applicationStatus);
 
     Optional<Application> findByIdAndApplicationStatusAndActivity_HelpSeeker(Long id, ApplicationStatus applicationStatus, HelpSeeker helpSeeker);
 
     List<Application> findByActivity(Activity activity);
 
+    List<Application> findByVolunteerAndApplicationStatusIn(Volunteer currentVolunteer, List<ApplicationStatus> applicationStatuses);
+
+
+
+    List<Application> findByVolunteerAndActivityAndApplicationStatusIn(Volunteer volunteer, Activity activity, List<ApplicationStatus> pending);
 }
+

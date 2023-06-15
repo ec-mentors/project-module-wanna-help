@@ -30,12 +30,14 @@ public class ApplicationService {
 
     public String acceptThisActivity(Long applicationId) {
         HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
-        Optional<Application> oApplication = applicationRepository.findByIdAndApplicationStatusAndActivity_HelpSeeker(applicationId, ApplicationStatus.PENDING, currentHelpSeeker);
+        Optional<Application> oApplication = applicationRepository
+                .findByIdAndApplicationStatusAndActivity_HelpSeeker(applicationId, ApplicationStatus.PENDING, currentHelpSeeker);
         if (oApplication.isEmpty()) {
             throw new EntityNotFoundException("application not found");
         }
         Application application = oApplication.get();
         application.setApplicationStatus(ApplicationStatus.ENROLLED);
+        application.getActivity().setActivityStatus(ActivityStatus.IN_PROGRESS);
         applicationRepository.save(application);
         return "The activity was accepted successfully.";
     }
@@ -47,7 +49,6 @@ public class ApplicationService {
             throw new EntityNotFoundException("application not found");
         }
         Activity activity = oApplication.get().getActivity();
-        activity.setActivityStatus(ActivityStatus.ARCHIVE);
         oApplication.get().setApplicationStatus(ApplicationStatus.DECLINED);
         activityRepository.save(activity);
         applicationRepository.save(oApplication.get());
@@ -71,7 +72,6 @@ public class ApplicationService {
         boolean activityInProgress = activity.getActivityStatus() == ActivityStatus.IN_PROGRESS;
 
         if (allApplicationsEnrolledOrDeclined && activityInProgress) {
-            //TODO: activity can have more states
             activity.setActivityStatus(ActivityStatus.ARCHIVE);
             applications.stream()
                     .filter(application -> application.getApplicationStatus() == ApplicationStatus.ENROLLED)

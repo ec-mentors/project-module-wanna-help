@@ -48,10 +48,11 @@ public class ActivityService {
         return activityRepository.findByActivityStatusAndHelpSeeker(ActivityStatus.PUBLISHED, currentHelpSeeker);
     }
 
-    //volunteer overview all activities:
+    //volunteer overview published activities:
     public List<Activity> volunteerViewPublishedActivities() {
         return activityRepository.findByActivityStatus(ActivityStatus.PUBLISHED);
     }
+
 
     //volunteer display specific activity
     public Activity displayThisActivity(Long id) {
@@ -69,49 +70,34 @@ public class ActivityService {
         if (oActivity.isEmpty()) {
             throw new EntityNotFoundException("no activity found");
         }
-        Activity activity = oActivity.get();
-        Application application = new Application();
         Volunteer volunteer = userHelper.getCurrentVolunteer();
+        Activity activity = oActivity.get();
+        List<Application> pendingDoneAndDeclinedApplications = applicationRepository
+                .findByVolunteerAndActivityAndApplicationStatusIn(
+                        volunteer,
+                        activity,
+                        List.of(ApplicationStatus.PENDING, ApplicationStatus.DECLINED, ApplicationStatus.DONE));
+        if (!pendingDoneAndDeclinedApplications.isEmpty()) {
+            throw new IllegalArgumentException("You can't apply again");
+        }
+        Application application = new Application();
         application.setVolunteer(volunteer);
         application.setActivity(activity);
         application.setApplicationStatus(ApplicationStatus.PENDING);
         application.setTimeStamp(LocalDateTime.now());
-        application.getActivity().setActivityStatus(ActivityStatus.IN_PROGRESS);
         applicationRepository.save(application);
         return "applied successful";
 
     }
 
-    //    public String applyForActivity(Long Id, ApplicationDto dto) {
-//
-//
-//
-//        Optional<Activity> optionalActivity = activityRepository.findById(Id);
-//        Optional<Volunteer> optionalVolunteer = volunteerRepository.findById(dto.getVolunteerId());
-//        Optional<HelpSeeker> optionalHelpSeeker = helpSeekerRepository.findById(dto.getHelpSeekerId());
-//        if (optionalActivity.isEmpty() || optionalVolunteer.isEmpty() || optionalHelpSeeker.isEmpty()) {
-//            return "activity not found";
-//        }
-//        Activity selectedActivity = optionalActivity.get();
-//        Volunteer volunteer = optionalVolunteer.get();
-//        HelpSeeker helpSeeker = optionalHelpSeeker.get();
-//        selectedActivity.setStatus(ActivityStatus.IN_PROGRESS);
-//        selectedActivity.setPending(true);
-//        volunteer.getApplications().add(selectedActivity);
-//        helpSeeker.getApplications().add(selectedActivity);
-//        volunteerRepository.save(volunteer);
-//        helpSeekerRepository.save(helpSeeker);
-//        return "applied successful";
-//
-//    }
-    //volunteer get applications in pending
+    //volunteer get applications in pending and enrolled (Application in PROGRESS)
     public List<Application> displayApplicationInProgress() {
         Volunteer currentVolunteer = userHelper.getCurrentVolunteer();
-        return applicationRepository.findByVolunteerAndApplicationStatus(currentVolunteer, ApplicationStatus.PENDING);
+        return applicationRepository.findByVolunteerAndApplicationStatusIn(currentVolunteer,
+                List.of(ApplicationStatus.PENDING, ApplicationStatus.ENROLLED));
     }
 
     //volunteer cancel application
-    //ROLE_VOLUNTEER
     public String cancelPendingApplication(Long id, @Validated @NotBlank(message = "Please write the comment to cancel the activity successfully.") String comment) {
         Volunteer currentVolunteer = userHelper.getCurrentVolunteer();
         Optional<Application> oApplication = applicationRepository.findByIdAndVolunteerAndApplicationStatus(id, currentVolunteer, ApplicationStatus.PENDING);
@@ -125,35 +111,8 @@ public class ActivityService {
         return "The activity was canceled successfully.";
     }
 
-//    public String cancelPendingActivity(Long Id, ApplicationDto dto) {
-//        Optional<Activity> optionalActivity = activityRepository.findById(Id);
-//        Optional<Volunteer> optionalVolunteer = volunteerRepository.findById(dto.getVolunteerId());
-//        Optional<HelpSeeker> optionalHelpSeeker = helpSeekerRepository.findById(dto.getHelpSeekerId());
-//        if (optionalActivity.isEmpty() || optionalVolunteer.isEmpty() || optionalHelpSeeker.isEmpty()) {
-//            return "activity not found";
-//        }
-//        if (dto.getComment().length() > 0) {
-//            Activity selectedActivity = optionalActivity.get();
-//            Volunteer volunteer = optionalVolunteer.get();
-//            HelpSeeker helpSeeker = optionalHelpSeeker.get();
-//            helpSeeker.getApplications().remove(selectedActivity);
-//            selectedActivity.setAborted(true);
-//            selectedActivity.setComment(dto.getComment());
-//            selectedActivity.setTimeStamp(java.time.LocalDateTime.now());
-//            volunteer.getApplications().remove(selectedActivity);
-//            activityRepository.save(selectedActivity);
-//            helpSeeker.getApplications().add(selectedActivity);
-//            volunteerRepository.save(volunteer);
-//            helpSeekerRepository.save(helpSeeker);
-//            return "The activity was canceled successfully.";
-//
-//        } else {
-//            return "Please write the comment to cancel the activity successfully.";
-//        }
-//
-//    }
 
-    //helpseeker overview his one in-progress activities -> secured Helpseeker
+    //helpseeker overview his one in-progress activities
     public List<Activity> viewInProgressActivities() {
         HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
         return activityRepository.findByActivityStatusAndHelpSeeker(ActivityStatus.IN_PROGRESS, currentHelpSeeker);
@@ -172,19 +131,21 @@ public class ActivityService {
             activity.setStartDate(updatedActivity.getStartDate());
             activity.setEndDate(updatedActivity.getEndDate());
         }
+    }
 
-//        public void updateThisActivity(Activity activity, Long Id) {
-//            Optional<Activity> optionalActivity = activityRepository.findById(Id);
-//            if (optionalActivity.isPresent()) {
-//                Activity selectedActivity = optionalActivity.get();
-//                selectedActivity.setTitle(activity.getTitle());
-//                selectedActivity.setDescription(activity.getDescription());
-//                selectedActivity.setRecommendedSkills(activity.getRecommendedSkills());
-//                selectedActivity.setStartDate(activity.getStartDate());
-//                selectedActivity.setEndDate(activity.getEndDate());
-//            }
+    //helpsseker overview his activities in archive
 
+    public List<Activity> helpSeekerOverViewArchive() {
+        HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
+        return activityRepository.findByActivityStatusAndHelpSeeker(ActivityStatus.ARCHIVE, currentHelpSeeker);
 
+    }
+
+    //volunteer view his application in archive (declined done aborted)
+    public List<Application> volunteerViewArchiveActivities() {
+        Volunteer currentVolunteer = userHelper.getCurrentVolunteer();
+        return applicationRepository.findByVolunteerAndApplicationStatusIn(currentVolunteer,
+                List.of(ApplicationStatus.DECLINED, ApplicationStatus.DONE, ApplicationStatus.ABORTED));
     }
 
 

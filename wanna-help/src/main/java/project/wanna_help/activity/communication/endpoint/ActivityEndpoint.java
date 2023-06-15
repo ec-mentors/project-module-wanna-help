@@ -20,19 +20,20 @@ public class ActivityEndpoint {
     }
 
     @PostMapping("/add")
-    @Secured({"ROLE_ORGANIZATION","ROLE_INDIVIDUAL"})
+    @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
     Activity addActivity(@Valid @RequestBody Activity activity) {
         return activityService.addNewActivity(activity);
     }
-    @GetMapping("/archive/helpSeeker/published")
-    @Secured({"ROLE_ORGANIZATION","ROLE_INDIVIDUAL"})
+
+    @GetMapping("/helpSeeker/published")
+    @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
     List<Activity> helpSeekerViewOwnPublished() {
         return activityService.helpSeekerViewPublishedActivities();
     }
 
-    @GetMapping("/archive/published")
+    @GetMapping("/volunteer/published")
     @Secured("ROLE_VOLUNTEER")
-    List<Activity> volunteerViewAllPublishedActivities(){
+    List<Activity> volunteerViewAllPublishedActivities() {
         return activityService.volunteerViewPublishedActivities();
     }
 
@@ -48,9 +49,9 @@ public class ActivityEndpoint {
         return activityService.applyForActivity(id);
     }
 
-    @GetMapping("/archive/volunteer/inProgress")
+    @GetMapping("/volunteer/inProgress")
     @Secured("ROLE_VOLUNTEER")
-    List<Application> volunteerViewAllApplicationInProgress(){
+    List<Application> volunteerViewAllApplicationInProgress() {
         return activityService.displayApplicationInProgress();
     }
 
@@ -59,18 +60,30 @@ public class ActivityEndpoint {
     String cancelPendingActivity(@PathVariable Long id, @RequestBody String comment) {
         return activityService.cancelPendingApplication(id, comment);
     }
-    @GetMapping("/archive/helpSeeker/inprogress")
-    @Secured({"ROLE_ORGANIZATION","ROLE_INDIVIDUAL"})
-    List<Activity> viewInProgress() {
+
+    @GetMapping("/helpSeeker/inProgress")
+    @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
+    List<Activity> helpSeekerViewInProgress() {
         return activityService.viewInProgressActivities();
     }
 
-    @PutMapping("/{activityId}/manage")
-    @Secured({"ROLE_ORGANIZATION","ROLE_INDIVIDUAL"})
-    void updateActivity(@PathVariable Long activityId,@Valid @RequestBody Activity updatedActivity) {
-        activityService.updateThisActivity(activityId,updatedActivity);
+    @GetMapping("/helpSeeker/archive")
+    @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
+    List<Activity> helpSeekerViewArchive() {
+        return activityService.helpSeekerOverViewArchive();
     }
 
+    @PutMapping("/{activityId}/manage")
+    @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
+    void updateActivity(@PathVariable Long activityId, @Valid @RequestBody Activity updatedActivity) {
+        activityService.updateThisActivity(activityId, updatedActivity);
+    }
+
+    @GetMapping("/volunteer/archive")
+    @Secured("ROLE_VOLUNTEER")
+    List<Application> volunteerViewAllApplicationInArchive() {
+        return activityService.volunteerViewArchiveActivities();
+    }
 
 
 }

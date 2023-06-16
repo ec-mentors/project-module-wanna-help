@@ -18,6 +18,11 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
     Optional<Application> findByIdAndVolunteerAndApplicationStatus(Long id, Volunteer volunteer, ApplicationStatus applicationStatus);
 
     Optional<Application> findByIdAndApplicationStatusAndActivity_HelpSeeker(Long id, ApplicationStatus applicationStatus, HelpSeeker helpSeeker);
+    List <Application> findByApplicationStatusAndVolunteerAndActivity_HelpSeeker(ApplicationStatus applicationStatus,Volunteer volunteer, HelpSeeker helpSeeker);
+
+    Application findByVolunteerAndActivity(Volunteer volunteer, Activity activity);
+    List<Application> findByVolunteerId(Long id);
+
 
     List<Application> findByActivity(Activity activity);
 

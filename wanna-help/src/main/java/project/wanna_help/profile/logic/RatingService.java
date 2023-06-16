@@ -1,8 +1,10 @@
 package project.wanna_help.profile.logic;
 
 import org.springframework.stereotype.Service;
+import project.wanna_help.activity.persistence.domain.Activity;
 import project.wanna_help.activity.persistence.domain.Application;
 import project.wanna_help.activity.persistence.domain.ApplicationStatus;
+import project.wanna_help.activity.persistence.repository.ActivityRepository;
 import project.wanna_help.activity.persistence.repository.ApplicationRepository;
 import project.wanna_help.appuser.logic.UserHelper;
 import project.wanna_help.profile.communication.dto.RatingDTO;
@@ -15,9 +17,8 @@ import project.wanna_help.profile.persistence.repository.RatingRepository;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class RatingService {
@@ -27,13 +28,16 @@ public class RatingService {
 
     private final HelpSeekerRepository helpSeekerRepository;
     private final ApplicationRepository applicationRepository;
+
+    private final ActivityRepository activityRepository;
     private final UserHelper userHelper;
 
-    public RatingService(RatingRepository ratingRepository, RatingConverter ratingConverter, HelpSeekerRepository helpSeekerRepository, ApplicationRepository applicationRepository, UserHelper userHelper) {
+    public RatingService(RatingRepository ratingRepository, RatingConverter ratingConverter, HelpSeekerRepository helpSeekerRepository, ApplicationRepository applicationRepository, ActivityRepository activityRepository, UserHelper userHelper) {
         this.ratingRepository = ratingRepository;
         this.ratingConverter = ratingConverter;
         this.helpSeekerRepository = helpSeekerRepository;
         this.applicationRepository = applicationRepository;
+        this.activityRepository = activityRepository;
         this.userHelper = userHelper;
     }
 
@@ -42,14 +46,25 @@ public class RatingService {
                 .orElseThrow(() -> new EntityNotFoundException("HelpSeeker not found with id: " + helpSeekerId));
 
         Volunteer currentVolunteer = userHelper.getCurrentVolunteer();
-        var listOfDoneApplications = applicationRepository.findByVolunteerAndApplicationStatus(currentVolunteer, ApplicationStatus.DONE);
 
-        boolean hasDoneApplication = false;
+        var applications = applicationRepository.findByApplicationStatusAndVolunteerAndActivity_HelpSeeker(ApplicationStatus.DONE, currentVolunteer, helpSeeker);
 
-        for (Application application : listOfDoneApplications) {
-            if (ratingRepository.findOneByHelpSeekerAndVolunteer(helpSeeker, userHelper.getCurrentVolunteer()).isPresent()) {
-                throw new EntityExistsException("You cannot give a rating more than once. You can update your rating after finishing another application with the same helpSeeker");
-            }
+        applications.sort(Comparator.comparing(Application::getTimeStamp).reversed());
+
+
+        var previousRating = ratingRepository.findOneByHelpSeekerAndVolunteer(helpSeeker, userHelper.getCurrentVolunteer());
+        if (applications.isEmpty()) {
+            throw new EntityNotFoundException("You cannot add a rating before your application is done");
+        }
+        Application latestApplication = applications.get(0);
+        if (previousRating.isPresent() && latestApplication.getTimeStamp().isBefore(previousRating.get().getRatingDate())) {
+            throw new EntityExistsException("You cannot give a rating more than once. You can update your rating after finishing another application with the same helpSeeker");
+
+        } else {
+            previousRating.ifPresent(rating -> {
+                helpSeeker.getRatings().remove(rating);
+                ratingRepository.delete(rating);
+            });
 
             Rating rating = new Rating();
             rating.setVolunteer(userHelper.getCurrentVolunteer());
@@ -65,13 +80,10 @@ public class RatingService {
 
             helpSeekerRepository.save(helpSeeker);
 
-            hasDoneApplication = true;
         }
 
-        if (!hasDoneApplication) {
-            throw new EntityNotFoundException("You cannot add a rating before your application is done");
-        }
     }
+
 
     private void updateHelpSeekerRatingStats(HelpSeeker helpSeeker) {
         int totalRatings = helpSeeker.getRatings().size();

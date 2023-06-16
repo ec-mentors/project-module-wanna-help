@@ -7,6 +7,7 @@ import project.wanna_help.appuser.persistence.domain.AppUser;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.beans.Visibility;
 import java.util.Set;
 
 
@@ -23,20 +24,32 @@ public class Volunteer {
     @Pattern(regexp = "^[A-Za-z ;]+$", message = "Invalid skills format. Skills must be delimited by ';' and contain only letters.")
     private String mySkills;
     @Enumerated(EnumType.STRING)
-    private ExperienceLevel experienceLevel = ExperienceLevel.BRONZE;
+    private ExperienceLevel experienceLevel = ExperienceLevel.ROOKIE;
     @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
 //    @JsonManagedReference
     @JsonIgnore
     private Set<Application> applications;
 
+    @Enumerated(EnumType.STRING)
+    private VisibilityStatus visibilityStatus = VisibilityStatus.VISIBLE;
+
     public Volunteer() {
     }
 
-    public Volunteer(AppUser appUser, String mySkills, ExperienceLevel experienceLevel, Set<Application> applications) {
+    public Volunteer(AppUser appUser, String mySkills, ExperienceLevel experienceLevel, Set<Application> applications, VisibilityStatus visibilityStatus) {
         this.appUser = appUser;
         this.mySkills = mySkills;
         this.experienceLevel = experienceLevel;
         this.applications = applications;
+        this.visibilityStatus = visibilityStatus;
+    }
+
+    public VisibilityStatus getVisibilityStatus() {
+        return visibilityStatus;
+    }
+
+    public void setVisibilityStatus(VisibilityStatus visibilityStatus) {
+        this.visibilityStatus = visibilityStatus;
     }
 
     public Volunteer(AppUser appUser) {

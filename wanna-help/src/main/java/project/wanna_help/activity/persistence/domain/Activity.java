@@ -142,4 +142,15 @@ public class Activity {
     public void setApplications(List<Application> applications) {
         this.applications = applications;
     }
+
+    @Override
+    public String toString() {
+        return
+                "Activity id: " + id + "\n" +
+                        "Title: " + title + "\n" +
+                        "Description: " + description + "\n" +
+                        "Recommended skills: " + recommendedSkills + "\n" +
+                        "Start date: " + startDate + "\n" +
+                        "End date: " + endDate + "\n";
+    }
 }

@@ -18,7 +18,6 @@ import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class RatingService {
@@ -28,16 +27,13 @@ public class RatingService {
 
     private final HelpSeekerRepository helpSeekerRepository;
     private final ApplicationRepository applicationRepository;
-
-    private final ActivityRepository activityRepository;
     private final UserHelper userHelper;
 
-    public RatingService(RatingRepository ratingRepository, RatingConverter ratingConverter, HelpSeekerRepository helpSeekerRepository, ApplicationRepository applicationRepository, ActivityRepository activityRepository, UserHelper userHelper) {
+    public RatingService(RatingRepository ratingRepository, RatingConverter ratingConverter, HelpSeekerRepository helpSeekerRepository, ApplicationRepository applicationRepository, UserHelper userHelper) {
         this.ratingRepository = ratingRepository;
         this.ratingConverter = ratingConverter;
         this.helpSeekerRepository = helpSeekerRepository;
         this.applicationRepository = applicationRepository;
-        this.activityRepository = activityRepository;
         this.userHelper = userHelper;
     }
 
@@ -98,7 +94,10 @@ public class RatingService {
     }
 
     public List<RatingDTO> getAllRatingsForHelpSeeker(Long helpSeekerId) {
-        List<Rating> ratings = ratingRepository.findByHelpSeekerId(helpSeekerId);
+        HelpSeeker helpSeeker = helpSeekerRepository.findById(helpSeekerId)
+                .orElseThrow(() -> new EntityNotFoundException("HelpSeeker not found with id: " + helpSeekerId));
+
+        List<Rating> ratings = ratingRepository.findByHelpSeekerId(helpSeeker.getId());
         List<RatingDTO> ratingDTOs = new ArrayList<>();
 
         ratings.sort(Comparator.comparing(Rating::getRatingDate).reversed());

@@ -4,6 +4,10 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import project.wanna_help.profile.communication.dto.AppUserDTO;
 import project.wanna_help.profile.logic.ProfileService;
+import project.wanna_help.profile.notifications.NotificationDTO;
+import project.wanna_help.profile.notifications.NotificationService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/profile/volunteer")
@@ -11,9 +15,12 @@ import project.wanna_help.profile.logic.ProfileService;
 public class VolunteerProfileEndpoint {
 
     private final ProfileService profileService;
+    private final NotificationService notificationService;
 
-    public VolunteerProfileEndpoint(ProfileService profileService) {
+
+    public VolunteerProfileEndpoint(ProfileService profileService, NotificationService notificationService) {
         this.profileService = profileService;
+        this.notificationService = notificationService;
     }
 
     @GetMapping("/myData")
@@ -37,8 +44,15 @@ public class VolunteerProfileEndpoint {
        return profileService.updateVolunteerSkills(skills);
     }
 
+    @PutMapping("/change_visibility")
+    String changeProfileVisibility() {
+        return profileService.changeProfileVisibility();
+    }
 
 
-
+    @GetMapping("/notifications")
+    List<NotificationDTO> getAllNotifications() {
+        return notificationService.getAllNotification();
+    }
 
 }

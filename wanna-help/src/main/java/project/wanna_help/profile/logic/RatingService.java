@@ -98,7 +98,10 @@ public class RatingService {
     }
 
     public List<RatingDTO> getAllRatingsForHelpSeeker(Long helpSeekerId) {
-        List<Rating> ratings = ratingRepository.findByHelpSeekerId(helpSeekerId);
+        HelpSeeker helpSeeker = helpSeekerRepository.findById(helpSeekerId)
+                .orElseThrow(() -> new EntityNotFoundException("HelpSeeker not found with id: " + helpSeekerId));
+
+        List<Rating> ratings = ratingRepository.findByHelpSeekerId(helpSeeker.getId());
         List<RatingDTO> ratingDTOs = new ArrayList<>();
 
         ratings.sort(Comparator.comparing(Rating::getRatingDate).reversed());

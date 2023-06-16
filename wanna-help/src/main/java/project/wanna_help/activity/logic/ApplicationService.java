@@ -84,6 +84,8 @@ public class ApplicationService {
         return "Activity was marked to DONE";
     }
 
-
-
+    public List<Application> helpSeekerViewAllApplications(){
+        HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
+        return applicationRepository.findByApplicationStatusAndActivity_HelpSeeker(ApplicationStatus.PENDING,currentHelpSeeker);
+    }
 }

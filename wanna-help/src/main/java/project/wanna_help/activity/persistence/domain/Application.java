@@ -23,7 +23,7 @@ public class Application {
     @ManyToOne
     private Activity activity;
     @ManyToOne
-    @JsonBackReference
+//    @JsonBackReference
     private Volunteer volunteer;
 
     public Application() {

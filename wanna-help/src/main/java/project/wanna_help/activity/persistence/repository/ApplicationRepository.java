@@ -26,5 +26,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
 
 
     List<Application> findByVolunteerAndActivityAndApplicationStatusIn(Volunteer volunteer, Activity activity, List<ApplicationStatus> pending);
+
+    List<Application> findByApplicationStatusAndActivity_HelpSeeker(ApplicationStatus applicationStatus, HelpSeeker helpSeeker);
 }
 

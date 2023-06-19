@@ -4,6 +4,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import project.wanna_help.profile.communication.dto.AppUserDTO;
 import project.wanna_help.profile.communication.dto.RatingDTO;
+import project.wanna_help.profile.communication.dto.VolunteerDTO;
 import project.wanna_help.profile.logic.ProfileService;
 import project.wanna_help.profile.logic.RatingService;
 
@@ -45,6 +46,5 @@ public class HelpSeekerProfileEndpoint {
     List<RatingDTO> getAllRating(@PathVariable Long id) {
         return ratingService.getAllRatingsForHelpSeeker(id);
     }
-
 
 }

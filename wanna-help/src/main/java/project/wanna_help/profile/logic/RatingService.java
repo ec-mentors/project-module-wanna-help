@@ -18,7 +18,6 @@ import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class RatingService {
@@ -28,16 +27,13 @@ public class RatingService {
 
     private final HelpSeekerRepository helpSeekerRepository;
     private final ApplicationRepository applicationRepository;
-
-    private final ActivityRepository activityRepository;
     private final UserHelper userHelper;
 
-    public RatingService(RatingRepository ratingRepository, RatingConverter ratingConverter, HelpSeekerRepository helpSeekerRepository, ApplicationRepository applicationRepository, ActivityRepository activityRepository, UserHelper userHelper) {
+    public RatingService(RatingRepository ratingRepository, RatingConverter ratingConverter, HelpSeekerRepository helpSeekerRepository, ApplicationRepository applicationRepository, UserHelper userHelper) {
         this.ratingRepository = ratingRepository;
         this.ratingConverter = ratingConverter;
         this.helpSeekerRepository = helpSeekerRepository;
         this.applicationRepository = applicationRepository;
-        this.activityRepository = activityRepository;
         this.userHelper = userHelper;
     }
 

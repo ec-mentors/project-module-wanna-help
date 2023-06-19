@@ -7,6 +7,7 @@ import project.wanna_help.appuser.persistence.domain.AppUser;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.beans.Visibility;
 import java.util.Set;
 
 
@@ -29,16 +30,28 @@ public class Volunteer {
     @JsonIgnore
     private Set<Application> applications;
 
+    @Enumerated(EnumType.STRING)
+    private VisibilityStatus visibilityStatus = VisibilityStatus.VISIBLE;
+
     private long completedActivitiesCount;
 
     public Volunteer() {
     }
 
-    public Volunteer(AppUser appUser, String mySkills, ExperienceLevel experienceLevel, Set<Application> applications) {
+    public Volunteer(AppUser appUser, String mySkills, ExperienceLevel experienceLevel, Set<Application> applications, VisibilityStatus visibilityStatus) {
         this.appUser = appUser;
         this.mySkills = mySkills;
         this.experienceLevel = experienceLevel;
         this.applications = applications;
+        this.visibilityStatus = visibilityStatus;
+    }
+
+    public VisibilityStatus getVisibilityStatus() {
+        return visibilityStatus;
+    }
+
+    public void setVisibilityStatus(VisibilityStatus visibilityStatus) {
+        this.visibilityStatus = visibilityStatus;
     }
 
     public long getCompletedActivitiesCount() {

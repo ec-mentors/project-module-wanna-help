@@ -42,7 +42,9 @@ public class ForgottenPasswordService {
             AppUser appUser = optionalUser.get();
             String useremail = appUser.getEmail();
             String link = createPasswordResetTokenForUser(appUser);
-            redirector.redirectEMail(useremail, link);
+            String subject = "Password Reset";
+            String content = "Dear User, Please click the link below to reset your password:\n" + link;
+            redirector.redirectEMail(nameOrEmail, subject, content);
         } else {
             throw new EntityNotFoundException("unknown email or user");
         }
@@ -69,7 +71,7 @@ public class ForgottenPasswordService {
         }
 
         Optional<PasswordResetToken> optionalPasswordResetToken = passwordResetTokenRepository.findByToken(token);
-        if (!optionalPasswordResetToken.isPresent()) {
+        if (optionalPasswordResetToken.isEmpty()) {
             throw new IllegalArgumentException("token is not valid");
         }
         PasswordResetToken passwordResetToken = optionalPasswordResetToken.get();

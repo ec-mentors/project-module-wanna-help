@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import project.wanna_help.profile.communication.dto.HelpSeekerDTO;
 import project.wanna_help.profile.communication.dto.VolunteerDTO;
 import project.wanna_help.profile.logic.ProfileService;
+import project.wanna_help.profile.persistence.domain.Volunteer;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/profile/")
@@ -27,5 +30,9 @@ public class AppUserProfileEndpoint {
     @GetMapping("/helpSeeker/{id}")
     HelpSeekerDTO getHelpSeekerProfile(@PathVariable Long id){
         return profileService.getHelpSeekerProfileSeenByOthers(id);
+    }
+    @GetMapping("/available_volunteers")
+    List<VolunteerDTO> getAllAvailableVolunteers() {
+        return profileService.getAllAvailableVolunteers();
     }
 }

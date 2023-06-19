@@ -11,7 +11,7 @@ import java.util.Properties;
 @Service
 public class EmailRedirector {
 
-    public void redirectEMail(String nameOrEmail, String link) {
+    public void redirectEMail(String nameOrEmail, String subject, String content) {
         String sourceEmail = "wanna.help@outlook.com";
         String sourcePassword = System.getenv("PROJECT_EMAIL_PASSWORD");
         String host = "smtp-mail.outlook.com";
@@ -34,8 +34,8 @@ public class EmailRedirector {
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(nameOrEmail));
 
             // Set the subject and content of the email
-            message.setSubject("Password Reset");
-            message.setText("Dear User, Please click the link below to reset your password:\n\n" + link);
+            message.setSubject(subject);
+            message.setText(content);
 
             // Redirect the email by sending it
             Transport.send(message);

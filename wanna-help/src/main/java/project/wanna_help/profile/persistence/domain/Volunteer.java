@@ -23,11 +23,13 @@ public class Volunteer {
     @Pattern(regexp = "^[A-Za-z ;]+$", message = "Invalid skills format. Skills must be delimited by ';' and contain only letters.")
     private String mySkills;
     @Enumerated(EnumType.STRING)
-    private ExperienceLevel experienceLevel = ExperienceLevel.BRONZE;
+    private ExperienceLevel experienceLevel = ExperienceLevel.ROOKIE;
     @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
 //    @JsonManagedReference
     @JsonIgnore
     private Set<Application> applications;
+
+    private long completedActivitiesCount;
 
     public Volunteer() {
     }
@@ -37,6 +39,14 @@ public class Volunteer {
         this.mySkills = mySkills;
         this.experienceLevel = experienceLevel;
         this.applications = applications;
+    }
+
+    public long getCompletedActivitiesCount() {
+        return completedActivitiesCount;
+    }
+
+    public void setCompletedActivitiesCount(long completedActivitiesCount) {
+        this.completedActivitiesCount = completedActivitiesCount;
     }
 
     public Volunteer(AppUser appUser) {

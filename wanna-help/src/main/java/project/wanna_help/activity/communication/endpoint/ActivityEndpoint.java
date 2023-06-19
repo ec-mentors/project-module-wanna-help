@@ -7,6 +7,7 @@ import project.wanna_help.activity.persistence.domain.Activity;
 import project.wanna_help.activity.persistence.domain.Application;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @RestController
@@ -57,7 +58,7 @@ public class ActivityEndpoint {
 
     @PutMapping("/{id}/cancel")
     @Secured("ROLE_VOLUNTEER")
-    String cancelPendingActivity(@PathVariable Long id, @RequestBody String comment) {
+    String cancelPendingActivity(@PathVariable Long id, @Valid @NotBlank(message = "Please write the comment to cancel the activity successfully.") @RequestBody String comment) {
         return activityService.cancelPendingApplication(id, comment);
     }
 

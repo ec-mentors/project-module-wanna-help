@@ -6,6 +6,11 @@ import org.springframework.stereotype.Service;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Collections;
 import java.util.Properties;
 
 @Service
@@ -36,7 +41,7 @@ public class EmailRedirector {
             // Set the subject and content of the email
             message.setSubject(subject);
             message.setText(content);
-
+            message.setHeader("Content-Type", "text/html");
             // Redirect the email by sending it
             Transport.send(message);
 
@@ -44,4 +49,5 @@ public class EmailRedirector {
             e.printStackTrace();
         }
     }
+
 }

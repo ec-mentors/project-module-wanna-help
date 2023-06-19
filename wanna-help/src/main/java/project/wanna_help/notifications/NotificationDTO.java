@@ -1,4 +1,4 @@
-package project.wanna_help.profile.notifications;
+package project.wanna_help.notifications;
 
 import java.time.LocalDateTime;
 

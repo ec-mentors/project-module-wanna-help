@@ -17,7 +17,6 @@ public class Application {
     @Enumerated(EnumType.STRING)
     private ApplicationStatus applicationStatus;
 
-    private String comment;
     @NotNull
     private LocalDateTime timeStamp;
     @ManyToOne
@@ -29,9 +28,9 @@ public class Application {
     public Application() {
     }
 
-    public Application(ApplicationStatus applicationStatus, String comment, LocalDateTime timeStamp, Activity activity, Volunteer volunteer) {
+    public Application(Long id, ApplicationStatus applicationStatus, LocalDateTime timeStamp, Activity activity, Volunteer volunteer) {
+        this.id = id;
         this.applicationStatus = applicationStatus;
-        this.comment = comment;
         this.timeStamp = timeStamp;
         this.activity = activity;
         this.volunteer = volunteer;
@@ -51,14 +50,6 @@ public class Application {
 
     public void setApplicationStatus(ApplicationStatus applicationStatus) {
         this.applicationStatus = applicationStatus;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     public LocalDateTime getTimeStamp() {

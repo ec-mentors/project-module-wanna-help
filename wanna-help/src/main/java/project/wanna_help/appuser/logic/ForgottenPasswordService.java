@@ -40,7 +40,6 @@ public class ForgottenPasswordService {
         Optional<AppUser> optionalUser = userRepository.findOneByUsernameOrEmail(nameOrEmail, nameOrEmail);
         if (optionalUser.isPresent()) {
             AppUser appUser = optionalUser.get();
-            String useremail = appUser.getEmail();
             String link = createPasswordResetTokenForUser(appUser);
             String subject = "Password Reset";
             String content = "Dear User, Please click the link below to reset your password:\n" + link;

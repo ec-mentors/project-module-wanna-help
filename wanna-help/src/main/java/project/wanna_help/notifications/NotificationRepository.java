@@ -1,4 +1,4 @@
-package project.wanna_help.profile.notifications;
+package project.wanna_help.notifications;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import project.wanna_help.profile.persistence.domain.Volunteer;

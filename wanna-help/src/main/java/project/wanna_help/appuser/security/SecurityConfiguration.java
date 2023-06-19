@@ -16,6 +16,7 @@ import project.wanna_help.appuser.persistence.repository.AppUserRepository;
 
 import java.util.Properties;
 
+import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 
 @Configuration
@@ -27,7 +28,10 @@ public class SecurityConfiguration {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers(POST, "/users", "/users/login").permitAll()
-                .antMatchers(POST, "/users/password-reset", "/users/password-reset/{token}").permitAll()
+                .antMatchers(POST, "/users/password-reset", "/users/password-reset/{token}")
+                .permitAll()
+                .antMatchers(GET, "profile/organization-individual/{volunteerId}/accept_invitation").permitAll()
+                .antMatchers(GET, "profile/organization-individual/{volunteerId}/decline_invitation").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout()

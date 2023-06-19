@@ -1,8 +1,6 @@
-package project.wanna_help.profile.notifications;
+package project.wanna_help.notifications;
 
 import org.springframework.stereotype.Service;
-import project.wanna_help.profile.communication.dto.RatingDTO;
-import project.wanna_help.profile.persistence.domain.Rating;
 
 @Service
 public class NotificationConverter {

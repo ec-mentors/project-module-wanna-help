@@ -4,8 +4,8 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import project.wanna_help.profile.communication.dto.AppUserDTO;
 import project.wanna_help.profile.logic.ProfileService;
-import project.wanna_help.profile.notifications.NotificationDTO;
-import project.wanna_help.profile.notifications.NotificationService;
+import project.wanna_help.notifications.NotificationDTO;
+import project.wanna_help.notifications.NotificationService;
 
 import java.util.List;
 

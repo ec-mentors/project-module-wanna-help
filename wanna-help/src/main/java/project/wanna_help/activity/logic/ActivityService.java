@@ -98,7 +98,7 @@ public class ActivityService {
     }
 
     //volunteer cancel application
-    public String cancelPendingApplication(Long id, @Validated @NotBlank(message = "Please write the comment to cancel the activity successfully.") String comment) {
+    public String cancelPendingApplication(Long id, String comment) {
         Volunteer currentVolunteer = userHelper.getCurrentVolunteer();
         Optional<Application> oApplication = applicationRepository.findByIdAndVolunteerAndApplicationStatus(id, currentVolunteer, ApplicationStatus.PENDING);
         if (oApplication.isEmpty()) {
@@ -106,7 +106,6 @@ public class ActivityService {
         }
         Application application = oApplication.get();
         application.setApplicationStatus(ApplicationStatus.ABORTED);
-        application.setComment(comment);
         applicationRepository.save(application);
         return "The activity was canceled successfully.";
     }

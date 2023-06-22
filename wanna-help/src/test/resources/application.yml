@@ -10,3 +10,24 @@ hibernate:
   dialect: org.hibernate.dialect.H2Dialect
   hbm2ddl:
     auto: create
+email_content: |
+  <html>
+    <head>
+      <style>
+        a.button {
+          display: inline-block;
+          padding: 10px 20px;
+          margin-right: 10px;
+          text-decoration: none;
+          border-radius: 20px;
+        }
+      </style>
+    </head>
+    <body>
+      <p>Dear Volunteer,</p>
+      <p>You have an invitation from {{ helpSeekerName }} to participate in the new activity:</p>
+      <pre>{{ activityDetails }}</pre>
+      <a href="{{ acceptLink }}" class="button" style="background-color:#00cc00; color:#ffffff;">Accept</a>
+      <a href="{{ declineLink }}" class="button" style="background-color:#ff0000; color:#ffffff;">Decline</a>
+    </body>
+  </html>

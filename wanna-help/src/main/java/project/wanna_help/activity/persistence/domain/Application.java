@@ -46,6 +46,14 @@ public class Application {
         this.id = id;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     public ApplicationStatus getApplicationStatus() {
         return applicationStatus;
     }

@@ -15,8 +15,10 @@ public class Application {
     @GeneratedValue
     private Long id;
     @Enumerated(EnumType.STRING)
+
     private ApplicationStatus applicationStatus;
 
+    private String comment;
     @NotNull
     private LocalDateTime timeStamp;
     @ManyToOne

@@ -14,6 +14,10 @@ import project.wanna_help.appuser.logic.RegistrationService;
 import project.wanna_help.appuser.persistence.domain.AppUser;
 import project.wanna_help.appuser.persistence.domain.UserRole;
 import project.wanna_help.appuser.persistence.repository.AppUserRepository;
+import project.wanna_help.profile.persistence.domain.HelpSeeker;
+import project.wanna_help.profile.persistence.domain.Volunteer;
+import project.wanna_help.profile.persistence.repository.HelpSeekerRepository;
+import project.wanna_help.profile.persistence.repository.VolunteerRepository;
 
 import javax.validation.ConstraintViolationException;
 import java.util.stream.Stream;
@@ -26,6 +30,10 @@ class RegistrationServiceTest {
 
     @MockBean
     AppUserRepository userRepository;
+    @MockBean
+    VolunteerRepository volunteerRepository;
+    @MockBean
+    HelpSeekerRepository helpSeekerRepository;
 
     @MockBean
     PasswordEncoder passwordEncoder;
@@ -35,7 +43,8 @@ class RegistrationServiceTest {
 
 
     static Stream<Arguments> parameters() {
-        return Stream.of( //correct
+        return Stream.of(
+                //correct
                 Arguments.of("right@email.com", "rightUsername1", "password1", UserRole.VOLUNTEER, "full name", true),
                 //password
                 Arguments.of("right@email.com", "rightUsername1", "password", UserRole.VOLUNTEER, "full name", false),
@@ -78,6 +87,11 @@ class RegistrationServiceTest {
             appUser = registrationService.register(appUser);
             Mockito.verify(userRepository).save(appUser);
             Mockito.verify(passwordEncoder).encode(password);
+            if (appUser.getRole() == UserRole.VOLUNTEER) {
+                Mockito.verify(volunteerRepository).save(Mockito.any(Volunteer.class));
+            } else {
+                Mockito.verify(helpSeekerRepository).save(Mockito.any(HelpSeeker.class));
+            }
         } else {
             AppUser finalAppUser = appUser;
             Assertions.assertThrows(ConstraintViolationException.class, () -> registrationService.register(finalAppUser));

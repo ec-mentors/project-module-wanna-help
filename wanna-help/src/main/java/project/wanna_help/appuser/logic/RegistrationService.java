@@ -39,7 +39,7 @@ public class RegistrationService {
                 helpSeekerRepository.save(new HelpSeeker(appUser)); break;
 
         }
-        return appUserRepository.save(appUser);
+        return appUser;
 
     }
 

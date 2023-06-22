@@ -33,6 +33,8 @@ public class Volunteer {
     @Enumerated(EnumType.STRING)
     private VisibilityStatus visibilityStatus = VisibilityStatus.VISIBLE;
 
+    private long completedActivitiesCount;
+
     public Volunteer() {
     }
 
@@ -50,6 +52,14 @@ public class Volunteer {
 
     public void setVisibilityStatus(VisibilityStatus visibilityStatus) {
         this.visibilityStatus = visibilityStatus;
+    }
+
+    public long getCompletedActivitiesCount() {
+        return completedActivitiesCount;
+    }
+
+    public void setCompletedActivitiesCount(long completedActivitiesCount) {
+        this.completedActivitiesCount = completedActivitiesCount;
     }
 
     public Volunteer(AppUser appUser) {

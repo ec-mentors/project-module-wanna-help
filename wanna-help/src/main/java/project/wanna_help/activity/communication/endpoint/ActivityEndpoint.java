@@ -2,7 +2,9 @@ package project.wanna_help.activity.communication.endpoint;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
+import project.wanna_help.activity.communication.dto.ApplicationVolunteerStatusDTO;
 import project.wanna_help.activity.logic.ActivityService;
+import project.wanna_help.activity.logic.ApplicationVolunteerConverter;
 import project.wanna_help.activity.persistence.domain.Activity;
 import project.wanna_help.activity.persistence.domain.Application;
 
@@ -15,9 +17,11 @@ import java.util.List;
 public class ActivityEndpoint {
 
     private final ActivityService activityService;
+    private final ApplicationVolunteerConverter applicationVolunteerConverter;
 
-    public ActivityEndpoint(ActivityService activityService) {
+    public ActivityEndpoint(ActivityService activityService, ApplicationVolunteerConverter applicationVolunteerConverter) {
         this.activityService = activityService;
+        this.applicationVolunteerConverter = applicationVolunteerConverter;
     }
 
     @PostMapping("/add")
@@ -52,8 +56,9 @@ public class ActivityEndpoint {
 
     @GetMapping("/volunteer/inProgress")
     @Secured("ROLE_VOLUNTEER")
-    List<Application> volunteerViewAllApplicationInProgress() {
-        return activityService.displayApplicationInProgress();
+    List<ApplicationVolunteerStatusDTO> volunteerViewAllApplicationInProgress() {
+        List<Application> applications = activityService.displayApplicationInProgress();
+        return applicationVolunteerConverter.convert(applications);
     }
 
     @PutMapping("/{id}/cancel")
@@ -82,8 +87,9 @@ public class ActivityEndpoint {
 
     @GetMapping("/volunteer/archive")
     @Secured("ROLE_VOLUNTEER")
-    List<Application> volunteerViewAllApplicationInArchive() {
-        return activityService.volunteerViewArchiveActivities();
+    List<ApplicationVolunteerStatusDTO> volunteerViewAllApplicationInArchive() {
+        List<Application> applications = activityService.volunteerViewArchiveActivities();
+        return applicationVolunteerConverter.convert(applications);
     }
 
 

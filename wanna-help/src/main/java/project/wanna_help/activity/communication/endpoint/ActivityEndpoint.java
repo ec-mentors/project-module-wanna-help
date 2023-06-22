@@ -86,5 +86,4 @@ public class ActivityEndpoint {
         return activityService.volunteerViewArchiveActivities();
     }
 
-
 }

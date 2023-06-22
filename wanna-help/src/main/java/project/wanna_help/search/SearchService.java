@@ -3,6 +3,7 @@ package project.wanna_help.search;
 import org.springframework.stereotype.Service;
 import project.wanna_help.profile.communication.dto.VolunteerDTO;
 import project.wanna_help.profile.logic.VolunteerConverter;
+import project.wanna_help.profile.persistence.domain.ExperienceLevel;
 import project.wanna_help.profile.persistence.domain.VisibilityStatus;
 import project.wanna_help.profile.persistence.domain.Volunteer;
 import project.wanna_help.profile.persistence.repository.VolunteerRepository;
@@ -53,5 +54,13 @@ public class SearchService {
         } else {
             throw new IllegalArgumentException("Searched word is too short, minimum length 3 characters.");
         }
+    }
+    public List<Volunteer> searchByExperienceLevel(ExperienceLevel experienceLevel) {
+        List<Volunteer> volunteers = volunteerRepository.findAllByExperienceLevel(experienceLevel);
+        if (!volunteers.isEmpty()) {
+           volunteers.forEach(volunteerConverter::convertVolunteerToDTO);
+           return volunteers;
+        }
+        throw new EntityNotFoundException("There are no available volunteers at the moment");
     }
 }

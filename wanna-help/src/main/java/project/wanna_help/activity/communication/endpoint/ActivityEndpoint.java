@@ -92,5 +92,4 @@ public class ActivityEndpoint {
         return applicationVolunteerConverter.convert(applications);
     }
 
-
 }

@@ -3,6 +3,7 @@ package project.wanna_help.notifications;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import project.wanna_help.activity.persistence.domain.Activity;
+import project.wanna_help.activity.persistence.domain.ActivityStatus;
 import project.wanna_help.activity.persistence.domain.Application;
 import project.wanna_help.activity.persistence.domain.ApplicationStatus;
 import project.wanna_help.activity.persistence.repository.ActivityRepository;
@@ -105,6 +106,7 @@ public class NotificationService {
         Optional<Application> oApplication = applicationRepository.findByVolunteerAndActivity(volunteer, activity);
         LocalDateTime localDateTime = LocalDateTime.now();
         ApplicationStatus applicationStatus = ApplicationStatus.ENROLLED;
+        activity.setActivityStatus(ActivityStatus.IN_PROGRESS);
 
         if (oApplication.isEmpty()) {
             Application application = new Application();

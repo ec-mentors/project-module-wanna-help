@@ -4,8 +4,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import project.wanna_help.profile.communication.dto.VolunteerDTO;
 import project.wanna_help.profile.persistence.domain.ExperienceLevel;
-import project.wanna_help.profile.persistence.domain.Volunteer;
-
 
 import java.util.List;
 
@@ -33,7 +31,7 @@ public class SearchEndpoint {
     }
     @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
     @GetMapping("/{experienceLevel}")
-    List<Volunteer> getByExperience(@PathVariable ExperienceLevel experienceLevel) {
+    List<VolunteerDTO> getByExperience(@PathVariable ExperienceLevel experienceLevel) {
         return searchService.searchByExperienceLevel(experienceLevel);
     }
 }

@@ -1,6 +1,8 @@
-package project.wanna_help.notifications;
+package project.wanna_help.notifications.logic;
 
 import org.springframework.stereotype.Service;
+import project.wanna_help.notifications.persistence.domain.Notification;
+import project.wanna_help.notifications.communication.dto.NotificationDTO;
 
 @Service
 public class NotificationConverter {

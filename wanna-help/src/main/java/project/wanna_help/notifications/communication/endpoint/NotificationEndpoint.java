@@ -1,7 +1,8 @@
-package project.wanna_help.notifications;
+package project.wanna_help.notifications.communication.endpoint;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
+import project.wanna_help.notifications.logic.NotificationService;
 
 @RestController
 @RequestMapping("profile/organization-individual")

@@ -1,4 +1,4 @@
-package project.wanna_help.notifications;
+package project.wanna_help.notifications.logic;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -10,6 +10,9 @@ import project.wanna_help.activity.persistence.repository.ActivityRepository;
 import project.wanna_help.activity.persistence.repository.ApplicationRepository;
 import project.wanna_help.appuser.logic.EmailRedirector;
 import project.wanna_help.appuser.logic.UserHelper;
+import project.wanna_help.notifications.persistence.domain.Notification;
+import project.wanna_help.notifications.persistence.repository.NotificationRepository;
+import project.wanna_help.notifications.communication.dto.NotificationDTO;
 import project.wanna_help.profile.persistence.domain.HelpSeeker;
 import project.wanna_help.profile.persistence.domain.Volunteer;
 import project.wanna_help.profile.persistence.repository.VolunteerRepository;

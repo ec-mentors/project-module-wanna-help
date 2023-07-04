@@ -1,4 +1,4 @@
-package project.wanna_help.notifications;
+package project.wanna_help.notifications.communication.dto;
 
 import java.time.LocalDateTime;
 

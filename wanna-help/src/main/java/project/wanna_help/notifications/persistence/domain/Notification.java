@@ -1,4 +1,4 @@
-package project.wanna_help.notifications;
+package project.wanna_help.notifications.persistence.domain;
 
 
 import project.wanna_help.profile.persistence.domain.HelpSeeker;

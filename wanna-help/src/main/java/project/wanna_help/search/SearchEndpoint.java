@@ -29,6 +29,7 @@ public class SearchEndpoint {
     List<VolunteerDTO> showSearchedVolunteers(@RequestBody String searchedWord) {
         return searchService.showSearchedVolunteers(searchedWord);
     }
+
     @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
     @GetMapping("/{experienceLevel}")
     List<VolunteerDTO> getByExperience(@PathVariable ExperienceLevel experienceLevel) {

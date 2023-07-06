@@ -21,9 +21,10 @@ public class RegistrationEndpoint {
         this.registrationService = registrationService;
         this.registrationConverter = registrationConverter;
     }
+
     @PostMapping
     RegisterDTO register(@Valid @RequestBody AppUser appUser) {
-      return registrationConverter.appUserToRegisterDto(registrationService.register(appUser));
+        return registrationConverter.appUserToRegisterDto(registrationService.register(appUser));
     }
 
 }

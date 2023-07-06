@@ -7,7 +7,7 @@ import project.wanna_help.profile.persistence.domain.HelpSeeker;
 @Service
 public class HelpSeekerConverter {
 
-    public HelpSeekerDTO convertHelpSeekerToDTO(HelpSeeker helpSeeker){
+    public HelpSeekerDTO convertHelpSeekerToDTO(HelpSeeker helpSeeker) {
         HelpSeekerDTO helpSeekerDTO = new HelpSeekerDTO();
         helpSeekerDTO.setEmail(helpSeeker.getAppUser().getEmail());
         helpSeekerDTO.setUsername(helpSeeker.getAppUser().getFullName());
@@ -19,8 +19,6 @@ public class HelpSeekerConverter {
         helpSeekerDTO.setTotalRatings(helpSeeker.getTotalRatings());
         return helpSeekerDTO;
     }
-
-
 
 
 }

@@ -35,13 +35,13 @@ public class VolunteerProfileEndpoint {
     }
 
     @GetMapping("/mySkills")
-    String getSkills(){
+    String getSkills() {
         return profileService.getVolunteerSkills();
     }
 
     @PostMapping("/mySkills")
-    String updateSkills(@RequestBody String skills){
-       return profileService.updateVolunteerSkills(skills);
+    String updateSkills(@RequestBody String skills) {
+        return profileService.updateVolunteerSkills(skills);
     }
 
     @PutMapping("/change_visibility")

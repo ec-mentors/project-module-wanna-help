@@ -7,7 +7,7 @@ import project.wanna_help.appuser.persistence.domain.AppUser;
 @Service
 public class RegistrationConverter {
 
-    public RegisterDTO appUserToRegisterDto(AppUser appUser){
+    public RegisterDTO appUserToRegisterDto(AppUser appUser) {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setEmail(appUser.getEmail());
         registerDTO.setUsername(appUser.getUsername());

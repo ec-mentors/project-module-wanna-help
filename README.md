@@ -7,7 +7,7 @@
 
 
 - [x] Setting up Repository
-- [ ] Decide about architecture
-- [ ] Solve the first story
+- [x] Decide about architecture
+- [x] Solve the first story
 
 :+1: Project in Progress  :smiley_cat:

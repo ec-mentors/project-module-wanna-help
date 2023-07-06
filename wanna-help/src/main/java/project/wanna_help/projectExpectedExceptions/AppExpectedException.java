@@ -75,6 +75,7 @@ public class AppExpectedException extends Exception {
 
 
     }
+
     @ExceptionHandler(EntityExistsException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody

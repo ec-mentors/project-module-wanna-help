@@ -5,7 +5,7 @@ public enum UserRole {
     INDIVIDUAL("ROLE_INDIVIDUAL"),
     ORGANIZATION("ROLE_ORGANIZATION");
 
-   private final String value;
+    private final String value;
 
     UserRole(String value) {
         this.value = value;

@@ -21,6 +21,7 @@ public class NotificationEndpoint {
                             @RequestBody String notificationMessage) {
         return notificationService.sendNotification(volunteerId, activityId, notificationMessage);
     }
+
     @GetMapping("/{volunteerId}/accept_invitation")
     String acceptInvitation(@PathVariable Long volunteerId,
                             @RequestParam Long activityId) {
@@ -28,13 +29,12 @@ public class NotificationEndpoint {
         return "Thank you for accepting our invitation";
     }
 
- @GetMapping("/{volunteerId}/decline_invitation")
+    @GetMapping("/{volunteerId}/decline_invitation")
     String declineInvitation(@PathVariable Long volunteerId,
-                            @RequestParam Long activityId) {
+                             @RequestParam Long activityId) {
         notificationService.declineInvitationStatus(volunteerId, activityId);
         return "You reject the invitation";
     }
-
 
 
 }

@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 public class ApplicationVolunteerStatusDTO {
 
 
-
     private Long applicationId;
     private ApplicationStatus applicationStatus;
     private LocalDateTime timeStamp;

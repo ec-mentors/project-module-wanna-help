@@ -18,7 +18,7 @@ public class ApplicationEndpoint {
 
     @GetMapping
     @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
-    List<Application> helpSeekerViewApplication(){
+    List<Application> helpSeekerViewApplication() {
         return applicationService.helpSeekerViewAllApplications();
     }
 
@@ -38,7 +38,7 @@ public class ApplicationEndpoint {
     @PutMapping("/{id}/decline")
     @Secured({"ROLE_ORGANIZATION", "ROLE_INDIVIDUAL"})
     String declineApplication(@PathVariable Long id) {
-       return applicationService.declineApplication(id);
+        return applicationService.declineApplication(id);
     }
 
 

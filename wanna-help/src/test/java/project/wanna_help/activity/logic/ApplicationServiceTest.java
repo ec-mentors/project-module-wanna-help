@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class ApplicationServiceTest {
 
@@ -33,7 +34,6 @@ class ApplicationServiceTest {
     UserHelper userHelper;
     @MockBean
     SecurityFilterChain securityFilterChain;
-
 
 
     @Test
@@ -53,7 +53,7 @@ class ApplicationServiceTest {
         applicationService.acceptThisActivity(1L);
 
         Mockito.verify(userHelper).getCurrentHelpSeeker();
-        Mockito.verify(applicationRepository).findByIdAndApplicationStatusAndActivity_HelpSeeker(1L,ApplicationStatus.PENDING,helpSeeker);
+        Mockito.verify(applicationRepository).findByIdAndApplicationStatusAndActivity_HelpSeeker(1L, ApplicationStatus.PENDING, helpSeeker);
         Mockito.verify(applicationRepository).save(application);
 
     }

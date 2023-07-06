@@ -17,8 +17,8 @@ public class HelpSeekerDTO {
     private LocalDate dateOfBirth;
     private String address;
 
-   private double averageRating;
-   private int totalRatings;
+    private double averageRating;
+    private int totalRatings;
 
     public HelpSeekerDTO() {
     }

@@ -18,12 +18,11 @@ public interface VolunteerRepository extends JpaRepository<Volunteer, Long> {
     Optional<Volunteer> findById(Long id);
 
     List<Volunteer> findAllByVisibilityStatusOrderByAppUser_Username(VisibilityStatus visibilityStatus);
+
     List<Volunteer> findAllByExperienceLevel(ExperienceLevel experienceLevel);
 
 
-    Optional<Volunteer>findByApplications_Activity(Activity activity);
-
-
+    Optional<Volunteer> findByApplications_Activity(Activity activity);
 
 
 }

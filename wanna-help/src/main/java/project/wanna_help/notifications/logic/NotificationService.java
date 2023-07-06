@@ -127,29 +127,29 @@ public class NotificationService {
     }
 
     // Change the application status of the volunteer to be aborted after declining the invitation sent to im by email
-     public void declineInvitationStatus(Long volunteerId, Long activityId) {
-         Volunteer volunteer = volunteerRepository.findById(volunteerId)
-                 .orElseThrow(() -> new EntityNotFoundException("Volunteer not found with id: " + volunteerId));
-         Activity activity = activityRepository.findById(activityId)
-                 .orElseThrow(() -> new EntityNotFoundException("Activity not found with id: " + activityId));
+    public void declineInvitationStatus(Long volunteerId, Long activityId) {
+        Volunteer volunteer = volunteerRepository.findById(volunteerId)
+                .orElseThrow(() -> new EntityNotFoundException("Volunteer not found with id: " + volunteerId));
+        Activity activity = activityRepository.findById(activityId)
+                .orElseThrow(() -> new EntityNotFoundException("Activity not found with id: " + activityId));
 
-         Optional<Application> oApplication = applicationRepository.findByVolunteerAndActivity(volunteer, activity);
-         LocalDateTime localDateTime = LocalDateTime.now();
-         ApplicationStatus applicationStatus = ApplicationStatus.ABORTED;
+        Optional<Application> oApplication = applicationRepository.findByVolunteerAndActivity(volunteer, activity);
+        LocalDateTime localDateTime = LocalDateTime.now();
+        ApplicationStatus applicationStatus = ApplicationStatus.ABORTED;
 
-         if (oApplication.isEmpty()) {
-             Application application = new Application();
-             application.setApplicationStatus(applicationStatus);
-             application.setTimeStamp(localDateTime);
-             application.setActivity(activity);
-             application.setVolunteer(volunteer);
-             applicationRepository.save(application);
-         } else {
-             Application application = oApplication.get();
-             application.setApplicationStatus(applicationStatus);
-             application.setTimeStamp(localDateTime);
-             applicationRepository.save(application);
-         }
-     }
+        if (oApplication.isEmpty()) {
+            Application application = new Application();
+            application.setApplicationStatus(applicationStatus);
+            application.setTimeStamp(localDateTime);
+            application.setActivity(activity);
+            application.setVolunteer(volunteer);
+            applicationRepository.save(application);
+        } else {
+            Application application = oApplication.get();
+            application.setApplicationStatus(applicationStatus);
+            application.setTimeStamp(localDateTime);
+            applicationRepository.save(application);
+        }
+    }
 
 }

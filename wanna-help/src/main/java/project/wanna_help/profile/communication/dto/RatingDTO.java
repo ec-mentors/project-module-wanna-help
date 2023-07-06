@@ -36,7 +36,6 @@ public class RatingDTO {
     }
 
 
-
     public String getComment() {
         return comment;
     }

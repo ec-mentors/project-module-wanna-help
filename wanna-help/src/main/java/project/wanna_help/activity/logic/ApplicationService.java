@@ -49,7 +49,7 @@ public class ApplicationService {
 
     public String declineApplication(Long applicationId) {
         HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
-        Optional<Application> oApplication =  applicationRepository.findByIdAndApplicationStatusAndActivity_HelpSeeker(applicationId, ApplicationStatus.PENDING, currentHelpSeeker);
+        Optional<Application> oApplication = applicationRepository.findByIdAndApplicationStatusAndActivity_HelpSeeker(applicationId, ApplicationStatus.PENDING, currentHelpSeeker);
         if (oApplication.isEmpty()) {
             throw new EntityNotFoundException("application not found");
         }
@@ -93,7 +93,7 @@ public class ApplicationService {
     }
 
     private void updateExperienceLevelWhenActivityDone(Activity activity) {
-        Optional <Volunteer> oVolunteer = volunteerRepository.findByApplications_Activity(activity);
+        Optional<Volunteer> oVolunteer = volunteerRepository.findByApplications_Activity(activity);
         if (oVolunteer.isPresent()) {
             Volunteer volunteer = oVolunteer.get();
             long completedActivitiesCount = volunteer.getCompletedActivitiesCount() + 1;
@@ -120,8 +120,8 @@ public class ApplicationService {
     }
 
 
-    public List<Application> helpSeekerViewAllApplications(){
+    public List<Application> helpSeekerViewAllApplications() {
         HelpSeeker currentHelpSeeker = userHelper.getCurrentHelpSeeker();
-        return applicationRepository.findByApplicationStatusAndActivity_HelpSeeker(ApplicationStatus.PENDING,currentHelpSeeker);
+        return applicationRepository.findByApplicationStatusAndActivity_HelpSeeker(ApplicationStatus.PENDING, currentHelpSeeker);
     }
 }

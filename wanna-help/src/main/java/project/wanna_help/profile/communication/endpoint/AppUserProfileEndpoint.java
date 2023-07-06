@@ -24,13 +24,15 @@ public class AppUserProfileEndpoint {
     }
 
     @GetMapping("/volunteer/{id}")
-    VolunteerDTO getVolunteerProfile(@PathVariable Long id){
+    VolunteerDTO getVolunteerProfile(@PathVariable Long id) {
         return profileService.getVolunteerProfileSeenByOthers(id);
     }
+
     @GetMapping("/helpSeeker/{id}")
-    HelpSeekerDTO getHelpSeekerProfile(@PathVariable Long id){
+    HelpSeekerDTO getHelpSeekerProfile(@PathVariable Long id) {
         return profileService.getHelpSeekerProfileSeenByOthers(id);
     }
+
     @GetMapping("/available_volunteers")
     List<VolunteerDTO> getAllAvailableVolunteers() {
         return profileService.getAllAvailableVolunteers();

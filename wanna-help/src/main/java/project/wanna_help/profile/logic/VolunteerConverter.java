@@ -3,6 +3,7 @@ package project.wanna_help.profile.logic;
 import org.springframework.stereotype.Service;
 import project.wanna_help.profile.communication.dto.VolunteerDTO;
 import project.wanna_help.profile.persistence.domain.Volunteer;
+
 @Service
 public class VolunteerConverter {
 

@@ -32,11 +32,14 @@ public class RegistrationService {
         String encodedPassword = passwordEncoder.encode(appUser.getPassword());
         appUser.setPassword(encodedPassword);
         appUser = appUserRepository.save(appUser);
-        switch(appUser.getRole()){
-            case VOLUNTEER: volunteerRepository.save(new Volunteer(appUser)); break;
+        switch (appUser.getRole()) {
+            case VOLUNTEER:
+                volunteerRepository.save(new Volunteer(appUser));
+                break;
             case INDIVIDUAL:
             case ORGANIZATION:
-                helpSeekerRepository.save(new HelpSeeker(appUser)); break;
+                helpSeekerRepository.save(new HelpSeeker(appUser));
+                break;
 
         }
         return appUser;

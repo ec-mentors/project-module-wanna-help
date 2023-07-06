@@ -16,6 +16,7 @@ import project.wanna_help.profile.persistence.repository.VolunteerRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -35,9 +36,9 @@ class SearchServiceTest {
 
 
     @Test
-    void showAvailableVolunteers(){
-        Volunteer volunteer1 = new Volunteer(new AppUser("eodod@fm.com","Bobiuu23","ddweewewew3", UserRole.VOLUNTEER,"Roli Teron"));
-        Volunteer volunteer2 = new Volunteer(new AppUser("eodooood@fm.com","Bobooiuu23","ddweewooewew3", UserRole.VOLUNTEER,"Rolioo Teron"));
+    void showAvailableVolunteers() {
+        Volunteer volunteer1 = new Volunteer(new AppUser("eodod@fm.com", "Bobiuu23", "ddweewewew3", UserRole.VOLUNTEER, "Roli Teron"));
+        Volunteer volunteer2 = new Volunteer(new AppUser("eodooood@fm.com", "Bobooiuu23", "ddweewooewew3", UserRole.VOLUNTEER, "Rolioo Teron"));
         List<Volunteer> volunteerList = new ArrayList<>();
         volunteerList.add(volunteer1);
         volunteerList.add(volunteer2);
@@ -52,10 +53,10 @@ class SearchServiceTest {
     @Test
     void showSearchedVolunteers() {
 
-        Volunteer volunteer1 = new Volunteer(new AppUser("eodod@fm.com","Bobiuu23","ddweewewew3", UserRole.VOLUNTEER,"Roli Teron"));
-        Volunteer volunteer2 = new Volunteer(new AppUser("eodooood@fm.com","Bobooiuu23","ddweewooewew33", UserRole.VOLUNTEER,"Rolioo Teron"));
-        Volunteer volunteer3 = new Volunteer(new AppUser("eodoiiid@fm.com","Boxxxuu99","xxxxxxxxx3", UserRole.VOLUNTEER,"Roli Teron"),"running; singing; skiing;",null,null,null);
-        Volunteer volunteer4 = new Volunteer(new AppUser("eodooxxxood@fm.com","Bobxxxuu12","yyyyyyyy3", UserRole.VOLUNTEER,"Rolioo Teron"),"fighting; flying; boxing;",null,null,null);
+        Volunteer volunteer1 = new Volunteer(new AppUser("eodod@fm.com", "Bobiuu23", "ddweewewew3", UserRole.VOLUNTEER, "Roli Teron"));
+        Volunteer volunteer2 = new Volunteer(new AppUser("eodooood@fm.com", "Bobooiuu23", "ddweewooewew33", UserRole.VOLUNTEER, "Rolioo Teron"));
+        Volunteer volunteer3 = new Volunteer(new AppUser("eodoiiid@fm.com", "Boxxxuu99", "xxxxxxxxx3", UserRole.VOLUNTEER, "Roli Teron"), "running; singing; skiing;", null, null, null);
+        Volunteer volunteer4 = new Volunteer(new AppUser("eodooxxxood@fm.com", "Bobxxxuu12", "yyyyyyyy3", UserRole.VOLUNTEER, "Rolioo Teron"), "fighting; flying; boxing;", null, null, null);
         List<Volunteer> volunteerList = new ArrayList<>();
         volunteerList.add(volunteer1);
         volunteerList.add(volunteer2);
@@ -66,7 +67,7 @@ class SearchServiceTest {
         Mockito.verify(volunteerRepository).findAllByVisibilityStatusOrderByAppUser_Username(VisibilityStatus.VISIBLE);
         var actual = result.size();
         var expected = 1;
-        assertEquals(actual,expected);
+        assertEquals(actual, expected);
     }
 }
 

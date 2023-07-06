@@ -55,12 +55,13 @@ public class SearchService {
             throw new IllegalArgumentException("Searched word is too short, minimum length 3 characters.");
         }
     }
+
     public List<VolunteerDTO> searchByExperienceLevel(ExperienceLevel experienceLevel) {
         List<Volunteer> volunteers = volunteerRepository.findAllByExperienceLevel(experienceLevel);
         List<VolunteerDTO> volunteerDTOS = new ArrayList<>();
         if (!volunteers.isEmpty()) {
-           volunteers.forEach(volunteer -> volunteerDTOS.add(volunteerConverter.convertVolunteerToDTO(volunteer)));
-           return volunteerDTOS;
+            volunteers.forEach(volunteer -> volunteerDTOS.add(volunteerConverter.convertVolunteerToDTO(volunteer)));
+            return volunteerDTOS;
         }
         throw new EntityNotFoundException("There are no available volunteers at the moment");
     }

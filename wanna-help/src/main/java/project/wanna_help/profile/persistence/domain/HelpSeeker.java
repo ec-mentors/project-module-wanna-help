@@ -27,8 +27,8 @@ public class HelpSeeker {
 
     //bidirectional and it says who is the leader.
     @OneToMany(mappedBy = "helpSeeker",
-               cascade = CascadeType.ALL,
-               orphanRemoval = true)
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
 //    @JsonManagedReference
     private Set<Activity> activities;
 

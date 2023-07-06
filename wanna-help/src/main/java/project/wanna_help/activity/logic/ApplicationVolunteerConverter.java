@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Service
 public class ApplicationVolunteerConverter {
 
-    public ApplicationVolunteerStatusDTO activityToActivityDTO(Application application ){
+    public ApplicationVolunteerStatusDTO activityToActivityDTO(Application application) {
         ApplicationVolunteerStatusDTO applicationVolunteerStatusDTO = new ApplicationVolunteerStatusDTO();
         applicationVolunteerStatusDTO.setApplicationId(application.getId());
         applicationVolunteerStatusDTO.setApplicationStatus(application.getApplicationStatus());
@@ -26,7 +26,7 @@ public class ApplicationVolunteerConverter {
     }
 
 
-    public List<ApplicationVolunteerStatusDTO> convert(List<Application> applications){
+    public List<ApplicationVolunteerStatusDTO> convert(List<Application> applications) {
         return applications.stream().map(this::activityToActivityDTO).collect(Collectors.toList());
     }
 

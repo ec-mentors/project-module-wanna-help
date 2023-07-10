@@ -32,7 +32,7 @@ Please note that the UX designs for these features were provided by our talented
 
 ## Conclusion
 
-The Volunteer Connection Platform has implemented several key features to connect help seekers with volunteers and organizations effectively. By providing a user-friendly functionality such as registration, activity creation, profile management, and an invitation system, the platform aims to streamline the process of finding and coordinating volunteers for activities.
+The Volunteer Connection Platform has implemented several key features to connect help seekers with volunteers. By providing a user-friendly functionality such as registration, activity creation, profile management, and an invitation system, the platform aims to streamline the process of finding and coordinating volunteers for activities.
 
 ## Demo Videos
 

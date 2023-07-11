@@ -58,6 +58,7 @@ To better understand the features and functionality of the Volunteer Connection 
 - Spring Boot Test
 - Spring Security Test
 - JUnit
+- Automated Smoke Tests
 
 Automated Smoke Tests:
 For smoke tests we created another Spring Boot project, which acts as a client. It has its own endpoints and frontend and the user can immediately see the results of smoketests.

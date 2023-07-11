@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>WannaHelp - Add Activity</title>
+</head>
+<body>
+    <header>
+        <h1 class="title">Add Activity</h1>
+        <p class="thankyou">Lets make this world a better place</p>
+    </header>
+    <main>
+        <h2 class="add-user">New Activity:</h2>
+        <form name="erik-form1" class="erik-form1">
+            <label for="name" class="required">Title:</label>
+            <input class="u-full-width" type="text" id="itle" name="title" required>
+            <label for="username" class="required">Description:</label>
+            <input class="u-full-width" type="text" id="description" name="description" required>
+            <label for="password" class="required">recommendedSkills:</label>
+            <input class="u-full-width" type="text" id="recommendedSkills" name="recommendedSkills" required>
+            <label class="required" for="birthday">startDate:</label>
+            <input type="date" id="startDate" name="startDate" required>
+            <label class="required" for="lat">endDate:</label>
+            <input type="date" id="endDate" name="endDate" required>
+            <button class="button-primary">Create Activity</button>
+        </form>
+        <div class="status">
+
+        </div>
+        <div class="result">
+
+        </div>
+    </main>
+    <script src="client.js"></script>
+</body>
+</html>

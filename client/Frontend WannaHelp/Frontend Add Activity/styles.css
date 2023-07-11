@@ -1,0 +1,52 @@
+.title {
+    text-align: center;
+    color: rgb(243, 150, 44);
+    font-family: luminary, fantasy;
+    font-size: 80px;
+    padding-top: 50px;
+    
+}
+.thankyou {
+    text-align: center;
+    color: rgb(236, 238, 222);
+    font-family: luminary, fantasy;
+}
+.add-user {
+    text-align: center;
+    font-family: luminary, fantasy;
+}
+
+.erik-form1 {
+    color: rgb(235, 253, 75);
+    width: 30%;
+    margin: 0 auto;
+}
+
+body {
+    color: #e0f965;
+    background-image: url("addactivity.png");
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 1100px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+#type {
+    padding-right: 30px;
+    margin-right: 50px;
+}
+#searchbutton {
+   margin-left: 130px;
+}
+
+.required:after {
+    content:" *";
+    color: red;
+  }
+
+.status {
+    text-align: center;
+}
+.result {
+    text-align: center;
+}

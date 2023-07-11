@@ -51,15 +51,18 @@ To better understand the features and functionality of the Volunteer Connection 
 - Spring Boot Validation
 - Spring Boot Web
 - MySQL
-- H2 Database (for testing)
 - Spring Boot DevTools
-- Spring Boot Test
-- Spring Security Test
-- JUnit
 - Spring Boot Starter Mail
 
 ## Testing
 
+- Spring Boot Test
+- Spring Security Test
+- JUnit
+
+Automated Smoke Tests:
+For smoke tests we created another Spring Boot project, which acts as a client. It has its own endpoints and frontend and the user can immediately see the results of smoketests.
+[download video](wanna-help/pictures/SmokeTests.mp4)
 
 ## Database Structure
 

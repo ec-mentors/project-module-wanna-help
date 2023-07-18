@@ -3,7 +3,7 @@ package project.wanna_help.appuser.logic;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import project.wanna_help.appuser.persistence.domain.AppUser;
-import project.wanna_help.appuser.security.UserPrincipal;
+import project.wanna_help.security.UserPrincipal;
 import project.wanna_help.profile.persistence.domain.HelpSeeker;
 import project.wanna_help.profile.persistence.domain.Volunteer;
 import project.wanna_help.profile.persistence.repository.HelpSeekerRepository;

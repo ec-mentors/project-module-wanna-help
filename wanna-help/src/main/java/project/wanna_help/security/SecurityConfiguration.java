@@ -1,4 +1,4 @@
-package project.wanna_help.appuser.security;
+package project.wanna_help.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

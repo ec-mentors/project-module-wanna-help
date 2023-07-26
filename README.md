@@ -52,6 +52,7 @@ To better understand the features and functionality of the Volunteer Connection 
 - MySQL
 - Spring Boot DevTools
 - Spring Boot Starter Mail
+- Html, CSS, JavaScript
 
 ## Testing
 
